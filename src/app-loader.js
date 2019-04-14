@@ -5,21 +5,15 @@ import './app.css'
 class App extends Component {
   render () {
     return (
-      <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className='App-link'
-            href='https://reactjs.org'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='container-fluid'>
+        <h1>Hello World!</h1>
+        <p>Resize the browser window to see the effect.</p>
+        <p>The columns will automatically stack on top of each other when the screen is less than 768px wide.</p>
+        <div className='row'>
+          <div className='col-sm-4' style={{ backgroundColor: 'lavender' }}>.col-sm-4</div>
+          <div className='col-sm-4' style={{ backgroundColor: 'lavenderblush' }}>>.col-sm-4</div>
+          <div className='col-sm-4' style={{ backgroundColor: 'red' }}>>.col-sm-4</div>
+        </div>
       </div>
     )
   }
