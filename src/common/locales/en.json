@@ -1,0 +1,11 @@
+{
+  "tab_bar": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "pr": "Purchase requisitions",
+    "po": "Purchase orders",
+    "pro": "Purchase requisitions/orders",
+    "info": "Information",
+    "truck_reservation": "Truck reservation"
+  }
+}
