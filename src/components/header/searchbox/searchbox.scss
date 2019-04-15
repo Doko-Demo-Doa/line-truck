@@ -1,5 +1,5 @@
-@import '~styles/_colors.scss';
-@import '~styles/_variables.scss';
+@import '~styles/colors';
+@import '~styles/variables';
 
 $bg-color: #2a2a32;
 
@@ -17,6 +17,7 @@ $bg-color: #2a2a32;
   padding-top: 10px;
   padding-bottom: 10px;
   max-height: 50px;
+  max-width: 800px;
   border: 1px solid #d8d8d8;
   background-color: $color-gray-light;
 

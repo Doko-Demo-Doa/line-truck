@@ -13,12 +13,6 @@ $avatar-size: 36px;
   z-index: 3;
   background-color: $color-white;
 
-  .drawer {
-    padding: 0 20px;
-    cursor: pointer;
-    visibility: hidden;
-  }
-
   .user-section {
     display: flex;
     flex-direction: row;

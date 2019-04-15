@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './header.scss'
 import { Logo } from '../logo/logo'
 import { SearchBox } from './searchbox/searchbox'
-import { DrawerIcon, ArrowDownIcon } from 'components/icon'
+import { ArrowDownIcon } from 'components/icon'
 import { WithDropdown } from '../../hocs/with-dropdown/with-dropdown'
 import { HeaderMenu } from 'components/header-menu/header-menu'
 
@@ -25,9 +25,6 @@ export class Header extends Component {
     return (
       <div className='brenn-header'>
         <Logo size={140} />
-        <div className='drawer'>
-          <DrawerIcon />
-        </div>
         <SearchBox />
         <WithDropdown
           closeAfterClick

@@ -3,6 +3,6 @@ import './logo.scss'
 
 export const Logo = () => {
   return (
-    <span className='logo'>INTERCOMPANYTRADE</span>
+    <span className='logo'>LINE Trucks</span>
   )
 }

@@ -95,6 +95,11 @@ body {
   box-sizing: border-box;
 }
 
+#root {
+  height: 100vh;
+  background-color: $color-white;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
