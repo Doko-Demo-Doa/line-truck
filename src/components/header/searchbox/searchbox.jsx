@@ -5,7 +5,6 @@ import products from './sample-data.json'
 import Fuse from 'fuse.js'
 import { SearchIcon } from 'components/icon'
 import { AppEventEmitter } from 'services/app-event-emitter'
-import { apiProduct } from '../../../api/api-product'
 
 export class SearchBox extends Component {
   constructor (props) {
@@ -36,8 +35,6 @@ export class SearchBox extends Component {
     const result = fuseSearch.search(keyword)
 
     this.setState({ suggestions: keyword ? result : products, query: keyword })
-    const resp = await apiProduct.searchProduct(keyword, 0, 100)
-    console.log(resp)
   }
 
   onViewAll (type: number) {

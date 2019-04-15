@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 import './side-menu-button.scss'
 import { DashboardIcon, ForecastIcon, HelpIcon, SlowmoversIcon,
-  MoneyIcon, StockswapIcon, BsLogoIcon, IntercoIcon } from 'components/icon'
+  MoneyIcon, StockswapIcon, LineLogoIcon, IntercoIcon } from 'components/icon'
 import { WithTooltip } from '../../../hocs/with-tooltip/with-tooltip'
 
 type Props = {
@@ -14,7 +14,7 @@ export class SideMenuButton extends Component<Props> {
     const { icon } = this.props
     switch (icon) {
       case 'bs':
-        return <BsLogoIcon className='side-menu-icon' />
+        return <LineLogoIcon className='side-menu-icon' />
       case 'dashboard':
         return <DashboardIcon className='side-menu-icon' />
       case 'money':

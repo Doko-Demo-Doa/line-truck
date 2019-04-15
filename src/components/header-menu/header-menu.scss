@@ -1,0 +1,40 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.header-menu {
+  background-color: white;
+  border: 1px solid $color-gray-medium;
+  padding: 8px 0;
+  width: 204px;
+  border-radius: 3px;
+  z-index: 99;
+
+  .sm-item {
+    display: flex;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: $font-standard-regular;
+    user-select: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: flex-start;
+
+    &:hover {
+      background-color: $color-dark-green;
+      color: white;
+    }
+
+    span {
+      margin-left: 16px;
+    }
+  }
+
+  .sm-item-inactive {
+    color: $color-gray-semihigh;
+
+    &:hover {
+      background-color: $color-gray-ultralight;
+      color: $color-gray-semihigh;
+    }
+  }
+}

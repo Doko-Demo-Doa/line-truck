@@ -1,0 +1,8 @@
+@import '~styles/variables';
+
+.logo {
+  font-family: $font-condensed-bold;
+  margin-right: 42px;
+  user-select: none;
+  cursor: pointer;
+}

@@ -265,6 +265,7 @@ module.exports = function (webpackEnv) {
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
         'styles': path.join(__dirname, '../src/assets/styles/'),
+        'services': path.join(__dirname, '../src/services/'),
         'components': path.join(__dirname, '../src/components/'),
         'common': path.join(__dirname, '../src/common/')
       },
@@ -402,12 +403,7 @@ module.exports = function (webpackEnv) {
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
-                data: `
-                  @import "styles/_colors.scss";
-                  @import "styles/_variables.scss";
-                  @import "styles/_mixins.scss";
-                `
+                getLocalIdent: getCSSModuleLocalIdent
               })
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
