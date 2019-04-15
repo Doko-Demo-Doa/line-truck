@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './authen-layout.scss'
 import { Header } from 'components/header/header'
 import { CustomTabBar } from 'components/header/tab-bar/tab-bar'
-import { BreadCrumbs } from 'components/breadcrumbs/breadcrumbs'
 import { i18next } from 'common/i18next'
 import Spinner from 'react-spinkit'
 import { customHistory } from '../../common/history'
@@ -40,7 +39,7 @@ export class AuthenLayout extends Component<Props> {
   }
 
   render () {
-    const { withoutHeader, withoutTabs, breadcrumbs, content, loading } = this.props
+    const { withoutHeader, withoutTabs, content, loading } = this.props
     const { activeTab } = this.state
 
     return (
@@ -51,7 +50,6 @@ export class AuthenLayout extends Component<Props> {
           {!withoutTabs && <CustomTabBar tabItems={TAB_ITEMS} onChange={(idx) => {
             this.setState({ activeTab: idx }, () => customHistory.push(TAB_ITEMS[idx].id))
           }} activeIndex={activeTab} />}
-          {breadcrumbs && <BreadCrumbs traces={breadcrumbs} />}
           <div className='content-main'>
             {loading ? <Spinner name='line-scale' color='#0517b9' /> : React.isValidElement(content) && React.cloneElement(content)}
           </div>

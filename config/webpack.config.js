@@ -264,6 +264,8 @@ module.exports = function (webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        'styles': path.join(__dirname, '../src/assets/styles/'),
+        'components': path.join(__dirname, '../src/components/'),
         'common': path.join(__dirname, '../src/common/')
       },
       plugins: [
@@ -402,8 +404,9 @@ module.exports = function (webpackEnv) {
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
                 data: `
-                  @import "../styles/_variables.scss";
-                  @import "../styles/_mixins.scss";
+                  @import "styles/_colors.scss";
+                  @import "styles/_variables.scss";
+                  @import "styles/_mixins.scss";
                 `
               })
             },

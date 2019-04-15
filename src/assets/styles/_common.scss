@@ -1,0 +1,101 @@
+@font-face {
+	font-family: "GT-America-Condensed-Black";
+	src: url("assets/fonts/GT-America-Condensed-Black.otf");
+}
+
+@font-face {
+	font-family: "GT-America-Condensed-Bold";
+	src: url("assets/fonts/GT-America-Condensed-Bold.otf");
+}
+
+@font-face {
+	font-family: "GT-America-Condensed-Light";
+	src: url("assets/fonts/GT-America-Condensed-Light.otf");
+}
+
+@font-face {
+	font-family: "GT-America-Condensed-Medium";
+	src: url("assets/fonts/GT-America-Condensed-Medium.otf");
+}
+
+@font-face {
+	font-family: "GT-America-Condensed-Regular";
+	src: url("assets/fonts/GT-America-Condensed-Regular.otf");
+}
+
+@font-face {
+	font-family: "GT-America-Condensed-Thin";
+	src: url("assets/fonts/GT-America-Condensed-Thin.otf");
+}
+
+@font-face {
+	font-family: "GT-America-Condensed-Ultra-Light";
+	src: url("assets/fonts/GT-America-Condensed-Ultra-Light.otf");
+}
+
+// Standard Font
+
+@font-face {
+	font-family: "GT-America-Standard-Black";
+	src: url("assets/fonts/standard/GT-America-Standard-Black.ttf");
+}
+
+@font-face {
+	font-family: "GT-America-Standard-Bold";
+	src: url("assets/fonts/standard/GT-America-Standard-Bold.ttf");
+}
+
+@font-face {
+	font-family: "GT-America-Standard-Light";
+	src: url("assets/fonts/standard/GT-America-Standard-Light.ttf");
+}
+
+@font-face {
+	font-family: "GT-America-Standard-Medium";
+	src: url("assets/fonts/standard/GT-America-Standard-Medium.ttf");
+}
+
+@font-face {
+	font-family: "GT-America-Standard-Regular";
+	src: url("assets/fonts/standard/GT-America-Standard-Regular.ttf");
+}
+
+@font-face {
+	font-family: "GT-America-Standard-Thin";
+	src: url("assets/fonts/standard/GT-America-Standard-Thin.ttf");
+}
+
+@font-face {
+	font-family: "GT-America-Standard-Ultra-Light";
+	src: url("assets/fonts/standard/GT-America-Standard-Ultra-Light.ttf");
+}
+
+html {
+	background-color: #121315;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

@@ -73,7 +73,7 @@
     }
 
     &:hover {
-      background-color: $color-deep-blue;
+      background-color: $color-dark-green;
 
       .suggestion-item-text {
         color: white;
@@ -88,7 +88,7 @@
 
     .suggestion-item-highlighted {
       background-color: transparent;
-      color: $color-deep-blue;
+      color: $color-dark-green;
     }
 
     .force-white {
@@ -99,7 +99,7 @@
   .suggestion-footer {
     cursor: pointer;
     padding: 13px 19px;
-    color: $color-deep-blue;
+    color: $color-dark-green;
     font-weight: bold;
     font-size: 14px;
     font-family: $font-standard-regular;
