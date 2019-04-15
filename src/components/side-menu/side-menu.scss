@@ -1,0 +1,9 @@
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 72px;
+  position: fixed;
+  z-index: 99;
+  background-color: $color-dark-green;
+}

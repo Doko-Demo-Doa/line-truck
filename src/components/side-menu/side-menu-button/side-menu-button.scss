@@ -1,0 +1,32 @@
+$button-size: 72px;
+$icon-size: 60px;
+
+.side-menu-button {
+  width: $button-size;
+  height: $button-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition-duration: 0.5s;
+
+  &:hover {
+    background-color: $color-dark-green;
+  }
+
+  &:last-child {
+    align-items: flex-end;
+    align-self: flex-end;
+  }
+
+  .side-menu-icon {
+    width: $icon-size;
+    height: $icon-size;
+    object-fit: scale-down;
+  }
+}
+
+.side-menu-button.active {
+  background-color: $color-dark-green;
+}

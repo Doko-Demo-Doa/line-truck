@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './authen-layout.scss'
-import { SideMenu } from 'components/side-menu/side-menu'
 import { Header } from 'components/header/header'
 import { CustomTabBar } from 'components/header/tab-bar/tab-bar'
 import { BreadCrumbs } from 'components/breadcrumbs/breadcrumbs'
 import { i18next } from 'common/i18next'
 import Spinner from 'react-spinkit'
 import { customHistory } from '../../common/history'
+import { SideMenu } from '../../components/side-menu/side-menu'
 
 type Props = {
   withoutTabs: boolean,
