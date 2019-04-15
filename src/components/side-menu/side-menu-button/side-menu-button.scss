@@ -27,6 +27,10 @@ $icon-size: 60px;
     height: $icon-size;
     object-fit: scale-down;
   }
+
+  .logo-side {
+    width: $icon-size - 12px;
+  }
 }
 
 .side-menu-button.active {

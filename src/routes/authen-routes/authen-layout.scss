@@ -6,7 +6,8 @@
   align-items: stretch;
   justify-content: space-between;
   height: 100%;
-  overflow-x: visible;
+  width: 100%;
+  overflow-x: hidden;
   background-color: $color-gray-light;
 
   .content {

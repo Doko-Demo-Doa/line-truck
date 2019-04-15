@@ -14,7 +14,7 @@ export class SideMenuButton extends Component<Props> {
     const { icon } = this.props
     switch (icon) {
       case 'bs':
-        return <LineLogoIcon className='side-menu-icon' />
+        return <LineLogoIcon className='side-menu-icon logo-side' />
       case 'dashboard':
         return <DashboardIcon className='side-menu-icon' />
       case 'money':

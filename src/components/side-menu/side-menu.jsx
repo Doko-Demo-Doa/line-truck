@@ -8,11 +8,11 @@ export class SideMenu extends Component {
       <div className='side-menu'>
         <SideMenuButton icon='bs' />
         <SideMenuButton icon='dashboard' tooltip='Dashboard' />
-        <SideMenuButton icon='money' tooltip='Money Penny' />
-        <SideMenuButton icon='forecast' tooltip='Demand Forecast' />
-        <SideMenuButton icon='stockswap' tooltip='Stock Swap' />
-        <SideMenuButton active icon='interco' tooltip='Intercompany Trade' />
-        <SideMenuButton icon='slowmovers' tooltip='Slow Movers' />
+        <SideMenuButton icon='money' tooltip='Revenue' />
+        <SideMenuButton icon='forecast' tooltip='Schedules' />
+        <SideMenuButton icon='stockswap' tooltip='Transactions' />
+        <SideMenuButton active icon='interco' tooltip='Profile Transfers' />
+        <SideMenuButton icon='slowmovers' tooltip='Packages' />
         <div style={{ flexGrow: 2 }} />
         <SideMenuButton icon='help' tooltip='Help' />
       </div>
