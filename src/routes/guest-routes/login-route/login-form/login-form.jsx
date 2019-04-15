@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import './login-form.scss'
 import { customHistory } from '../../../../common/history'
 import { CustomInput } from 'components/custom-input/custom-input'
-import { ButtonMain } from '../../../../components/button/button-main'
+import { ButtonMain } from 'components/button/button-main'
 import { LoginArrowIcon } from 'components/icon'
 
 const validator = values => {

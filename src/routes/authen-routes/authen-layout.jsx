@@ -16,7 +16,7 @@ type Props = {
 }
 
 const TAB_ITEMS = [
-  { id: 'products', name: i18next.t('tab_bar.products') },
+  { id: 'dashboard', name: i18next.t('tab_bar.dashboard') },
   { id: 'purchase-request', name: i18next.t('tab_bar.pro') },
   { id: 'info', name: i18next.t('tab_bar.info') }
 ]
@@ -32,7 +32,7 @@ export class AuthenLayout extends Component<Props> {
     let activeTab = 0
     if (location.href.includes('info')) activeTab = 2
     if (location.href.includes('purchase-request')) activeTab = 1
-    if (location.href.includes('products')) activeTab = 0
+    if (location.href.includes('dashboard')) activeTab = 0
     this.state = {
       activeTab
     }

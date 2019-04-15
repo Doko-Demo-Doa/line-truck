@@ -1,0 +1,51 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.switch-wrapper {
+  cursor: pointer;
+  position: sticky;
+  user-select: none;
+  background-color: $color-gray-light;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 5px 5px;
+
+  .inner {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    border-radius: 24px;
+    z-index: 3;
+    transition: background-color 0.3s;
+
+    span {
+      position: relative;
+      color: $color-black-primary;
+      font-family: $font-standard-regular;
+      font-size: 14px;
+      z-index: 1;
+      margin-left: 8px;
+    }
+
+    .active-text {
+      color: $color-white;
+    }
+  }
+
+  .inner-animatable {
+    width: 128px;
+    height: 34px;
+    background-color: $color-deep-blue;
+    position: absolute;
+    left: 2.2%;
+    border-radius: 24px;
+    transition: 0.2s all ease-in-out;
+  }
+
+  .active {
+    left: 49.2%;
+  }
+}
