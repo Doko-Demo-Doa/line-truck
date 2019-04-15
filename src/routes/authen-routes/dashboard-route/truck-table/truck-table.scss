@@ -120,9 +120,9 @@
     }
 
     // Column sizes:
-    .code {
-      min-width: 100px;
-      width: 12%;
+    .truck-plate {
+      min-width: 80px;
+      width: 10%;
       display: flex;
       align-items: center;
 
@@ -133,8 +133,9 @@
       }
     }
 
-    .description {
-      width: 28%;
+    .cargo-type {
+      min-width: 90px;
+      width: 16%;
       display: flex;
       align-items: center;
 

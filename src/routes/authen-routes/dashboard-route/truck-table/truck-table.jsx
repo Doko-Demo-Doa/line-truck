@@ -132,7 +132,7 @@ export class TruckTable extends Component {
             </div>
           ) : (<span>Truck List</span>)}
           <div className='right-btns'>
-            <Switch onChange={isAll => this.onSwitch(isAll)} checkedInitially={false} label1='All Products' label2='My Products' />
+            <Switch onChange={isAll => this.onSwitch(isAll)} checkedInitially={false} label1='All Trucks' label2='New Trucks' />
           </div>
         </div>
 
