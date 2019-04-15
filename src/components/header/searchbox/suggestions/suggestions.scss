@@ -1,0 +1,109 @@
+@import '~styles/_colors.scss';
+@import '~styles/_variables.scss';
+
+.suggestions {
+  z-index: 99;
+  position: absolute;
+  background-color: white;
+  border-radius: 3px;
+
+  width: 100%;
+  left: 0;
+  top: 44px;
+  transition: 0.2s all linear;
+
+  .empty {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    padding: 48px;
+
+    p {
+      color: #777;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+  }
+
+  .suggestions-tabs {
+    display: flex;
+    width: 100%;
+    background-color: $color-gray-ultralight;
+    border-bottom: 1px solid $color-gray-medium;
+
+    .s-tab {
+      user-select: none;
+      cursor: pointer;
+      display: flex;
+      font-size: 14px;
+      justify-content: center;
+      font-family: $font-standard-medium;
+      align-items: center;
+      height: 46px;
+      padding: 0 18px;
+      border-bottom: 2px solid $color-gray-ultralight;
+      transition: 0.2s all linear;
+
+      span {
+        background-color: #A0A0A0;
+        color: white;
+        padding: 3px 5px;
+        font-size: 11px;
+        border-radius: 12px;
+        margin-left: 10px;
+      }
+    }
+
+    .s-tab-active {
+      border-bottom: 2px solid $color-orange;
+    }
+  }
+
+  .suggestion-item {
+    display: flex;
+    padding: 15px 28px;
+    cursor: pointer;
+    user-select: none;
+
+    .ico {
+      max-height: 16px;
+      width: 15px;
+      object-fit: fill;
+    }
+
+    &:hover {
+      background-color: $color-deep-blue;
+
+      .suggestion-item-text {
+        color: white;
+      }
+    }
+
+    .suggestion-item-text {
+      font-size: 14px;
+      margin-left: 24px;
+      font-family: $font-standard-regular;
+    }
+
+    .suggestion-item-highlighted {
+      background-color: transparent;
+      color: $color-deep-blue;
+    }
+
+    .force-white {
+      color: white !important;
+    }
+  }
+
+  .suggestion-footer {
+    cursor: pointer;
+    padding: 13px 19px;
+    color: $color-deep-blue;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: $font-standard-regular;
+    background-color: $color-gray-ultralight;
+    border-top: 1px solid $color-gray-medium;
+  }
+}

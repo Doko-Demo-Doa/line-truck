@@ -1,0 +1,10 @@
+.dropdown-renderprops {
+  position: relative;
+
+  .dropdown-main {
+    position: absolute;
+    transition-duration: 0.6s;
+    width: 100%;
+    z-index: 9;
+  }
+}

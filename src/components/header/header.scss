@@ -1,0 +1,55 @@
+@import '~styles/_colors.scss';
+@import '~styles/_variables.scss';
+
+$avatar-size: 36px;
+
+.brenn-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 36px;
+  padding-left: 20px;
+  z-index: 3;
+  background-color: $color-white;
+
+  .drawer {
+    padding: 0 20px;
+    cursor: pointer;
+    visibility: hidden;
+  }
+
+  .user-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .avatar {
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 50%;
+      object-fit: none;
+    }
+
+    .user-name {
+      font-size: 14px;
+      user-select: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-family: $font-standard-medium;
+      color: $color-black-primary;
+      white-space: nowrap;
+    }
+
+    .arrow-down {
+      margin-top: 3px;
+    }
+  }
+
+  .header-menu-extra {
+    right: 65px;
+    top: 50px;
+  }
+}

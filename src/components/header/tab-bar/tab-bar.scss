@@ -1,0 +1,29 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.custom-tab-bar {
+  max-width: 1000px;
+  padding-left: 2px;
+
+  .tabs {
+    display: flex;
+    width: 100%;
+    background-color: white;
+
+    .tab {
+      padding: 13px 18px;
+      font-family: $font-standard-medium;
+      color: #6f6f6f;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 2px solid white;
+      transition-duration: 0.4s;
+    }
+
+    .active {
+      color: $color-black-primary;
+      border-bottom: 2px solid $color-deep-blue;
+    }
+  }
+}

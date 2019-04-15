@@ -1,0 +1,45 @@
+@import '~styles/_colors.scss';
+
+$btn-size: 70px;
+$icon-size: 20px;
+
+.header-button {
+  width: $btn-size + 12px;
+  height: $btn-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #25262b;
+  }
+
+  .icon {
+    width: $icon-size;
+    height: $icon-size;
+    object-fit: scale-down;
+  }
+
+  .extra {
+    width: $icon-size + 6px;
+    height: $icon-size + 6px;
+  }
+
+  .indicator {
+    height: 4px;
+    width: 100%;
+    background-color: $color-blue-light;
+    align-self: flex-end;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+}
+
+.brighter {
+  background-color: #25262b;
+}
