@@ -1,0 +1,22 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.line-chip {
+  display: flex;
+  align-items: center;
+  background-color: $color-gray-light;
+  padding: 8px 14px;
+  border-radius: 20px;
+
+  .label {
+    margin: 0 10px;
+    color: $color-black-primary;
+  }
+
+  .close-ico {
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}

@@ -7,11 +7,11 @@ export class SideMenu extends Component {
     return (
       <div className='side-menu'>
         <SideMenuButton icon='bs' />
-        <SideMenuButton icon='dashboard' tooltip='Dashboard' />
+        <SideMenuButton active icon='dashboard' tooltip='Dashboard' />
         <SideMenuButton icon='money' tooltip='Revenue' />
         <SideMenuButton icon='forecast' tooltip='Schedules' />
         <SideMenuButton icon='stockswap' tooltip='Transactions' />
-        <SideMenuButton active icon='interco' tooltip='Profile Transfers' />
+        <SideMenuButton icon='interco' tooltip='Profile Transfers' />
         <SideMenuButton icon='slowmovers' tooltip='Packages' />
         <div style={{ flexGrow: 2 }} />
         <SideMenuButton icon='help' tooltip='Help' />
