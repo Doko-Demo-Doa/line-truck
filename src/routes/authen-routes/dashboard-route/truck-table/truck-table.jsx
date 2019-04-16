@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 import { sortBy } from 'lodash'
 import Spinner from 'react-spinkit'
-import './truck-table.scss'
 import { Switch } from 'components/switch/switch'
 import { SortIcon } from 'components/icon'
 import { customHistory } from 'common/history'
 import { Chip } from 'components/chip/chip'
 import { AppEventEmitter } from 'services/app-event-emitter'
+import './truck-table.scss'
+import sampleTrucks from './sample-data.json'
 
 const TABLE_SECTIONS = [
   {
@@ -65,8 +66,8 @@ export class TruckTable extends Component {
     super(props)
     this.list = React.createRef()
     this.state = {
-      products: [],
-      productsFiltered: []
+      products: sampleTrucks,
+      productsFiltered: sampleTrucks
     }
   }
 
@@ -137,19 +138,21 @@ export class TruckTable extends Component {
         </div>
 
         <div className='main-table'>
-          {/* Table Header */}
-          <div className='table-header'>
-            {TABLE_SECTIONS.map((item, idx) => (
-              <div onClick={() => item.icon ? this.onSort(item.id) : null} key={idx} className={classnames('header-item', item.cls)}>
-                <span>{item.name}</span>
-                <SortIcon className={classnames('ico', item.icon ? '' : 'translucent', descending && (item.id === sortType) ? 'descending' : '')} />
-              </div>
-            ))}
-          </div>
+          <div>
+            {/* Table Header */}
+            <div className='table-header'>
+              {TABLE_SECTIONS.map((item, idx) => (
+                <div onClick={() => item.icon ? this.onSort(item.id) : null} key={idx} className={classnames('header-item', item.cls)}>
+                  <span>{item.name}</span>
+                  <SortIcon className={classnames('ico', item.icon ? '' : 'translucent', descending && (item.id === sortType) ? 'descending' : '')} />
+                </div>
+              ))}
+            </div>
 
-          {/* Table Content */}
-          <div className='table-content' id='product-table-parent'>
-            {productsFiltered.map((item, idx) => this.renderItem(item, idx))}
+            {/* Table Content */}
+            <div className='table-content' id='product-table-parent'>
+              {productsFiltered.map((item, idx) => this.renderItem(item, idx))}
+            </div>
           </div>
         </div>
         <div className='table-footer'>

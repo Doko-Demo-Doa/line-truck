@@ -58,11 +58,6 @@
       overflow-y: auto;
       height: 100%;
 
-      > div:first-of-type {
-        min-height: 200px;
-        max-height: calc(100vh - 345px);
-      }
-
       .empty {
         width: 100%;
         height: 100%;
@@ -135,7 +130,7 @@
 
     .cargo-type {
       min-width: 90px;
-      width: 16%;
+      width: 13%;
       display: flex;
       align-items: center;
 
@@ -181,42 +176,25 @@
       }
     }
 
-    .pack {
+    .driver-name {
+      min-width: 100px;
+      width: 15%;
+    }
+
+    .truck-type {
       min-width: 110px;
       width: 10%;
     }
 
-    .size {
-      min-width: 110px;
-      width: 10%;
-    }
-
-    .supplier {
-      width: 18%;
-      max-width: 14%;
-      text-overflow: ellipsis;
-
-      .overflow-tooltip {
-        left: -20%;
-        top: 120%;
-
-        &::before {
-          border-width: 0px;
-        }
-      }
-
-      .supplier-text {
-        margin-right: 6px;
-        overflow-x: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        font-family: $font-standard-regular;
-      }
-    }
-
-    .coo {
-      min-width: 120px;
+    .price {
       width: 16%;
+      min-width: 130px;
+      text-overflow: ellipsis;
+    }
+
+    .dimension {
+      min-width: 100px;
+      width: 11%;
     }
 
     .rfi {

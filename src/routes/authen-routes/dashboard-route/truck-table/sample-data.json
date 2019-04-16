@@ -1,0 +1,53 @@
+[
+  {
+    "id": 0,
+    "truck_plate": "30A-50493",
+    "cargo_type": ["Computer", "Electronic"],
+    "driver": "Nguyen Van A",
+    "truck_type": "5 tons",
+    "price": 1000000000,
+    "dimension": {
+      "length": 10,
+      "width": 2,
+      "height": 1.5
+    },
+    "parking_address": "No. 128 Hoan Kiem Street, Hanoi",
+    "production_year": "2010",
+    "status": 0,
+    "description": "Sample Description"
+  },
+  {
+    "id": 1,
+    "truck_plate": "30A-12345",
+    "cargo_type": ["Vegetable"],
+    "driver": "Nguyen Van A",
+    "truck_type": "10 tons",
+    "price": 1500000000,
+    "dimension": {
+      "length": 10,
+      "width": 2,
+      "height": 1.5
+    },
+    "parking_address": "No. 128 Hoan Kiem Street, Hanoi",
+    "production_year": "2010",
+    "status": 1,
+    "description": "Sample Description 2"
+  },
+  {
+    "id": 2,
+    "truck_plate": "30A-99999",
+    "cargo_type": ["Kid toys", "Computer"],
+    "driver": "Nguyen Van C",
+    "truck_type": "20 tons",
+    "price": 1200000000,
+    "dimension": {
+      "length": 10,
+      "width": 2,
+      "height": 1.5
+    },
+    "parking_address": "No. 128 Hoan Kiem Street, Hanoi",
+    "production_year": "2010",
+    "status": 2,
+    "description": "Sample Description"
+  }
+]
