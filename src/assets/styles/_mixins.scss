@@ -64,15 +64,15 @@
   display: flex;
   align-items: center;
   height: 48px;
-  padding: 4px 22px;
+  padding: 12px 22px;
   color: $color-gray-high;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   border-bottom: 1px solid $color-gray-light;
-  transition: background-color 0.4ms;
+  transition: 0.2s all linear;
 
   &:nth-child(odd) {
-    background-color: $color-gray-ultralight;
+    background-color: $color-light-green;
   }
 
   span {
@@ -82,7 +82,7 @@
 
   &:hover {
     @if $hov == 1 {
-      background-color: $color-gray-regular;
+      background-color: wheat;
     }
   }
 }

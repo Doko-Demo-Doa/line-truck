@@ -4,7 +4,6 @@ import { sortBy } from 'lodash'
 import Spinner from 'react-spinkit'
 import { Switch } from 'components/switch/switch'
 import { SortIcon } from 'components/icon'
-import { customHistory } from 'common/history'
 import { Chip } from 'components/chip/chip'
 import { AppEventEmitter } from 'services/app-event-emitter'
 import './truck-table.scss'
@@ -102,20 +101,23 @@ export class TruckTable extends Component {
 
   renderItem = (item, idx) => {
     return (
-      <div key={idx} onClick={(e) => customHistory.push(`/product-detail/${item.productNumber}?ext=` + (item.extendedToUsersCountry ? 1 : 0), item)} className={classnames('table-item', item.cls)}>
-        <div className='code'>
-          <span>{item.productNumberShort || '000000'}</span>
+      <div key={idx} className={classnames('table-item', item.cls)}>
+        <div className='truck-plate'>
+          <span>{item.truck_plate || '000000'}</span>
         </div>
-        <div className='description'>
-          {item.productDescription}
+        <div className='cargo-type'>
+          {item.cargo_type.join(', ')}
         </div>
-        <div className='pack'>aaa</div>
-        <div className='size'>{item.packagingSize || '-'}</div>
-        <div className='supplier'>{item.supplierName}</div>
-        <div className='coo'>{item.countryOfOrigin || '-'}</div>
-        <div className='rfi'>
-          <span onClick={(e) => this.openRFI(e, item)}>RFI</span>
+        <div className='driver-name'>{item.driver}</div>
+        <div className='truck-type'>{item.truck_type || '-'}</div>
+        <div className='price'>{item.price}</div>
+        <div className='dimension'>{item.dimension.length + '-' + item.dimension.width + '-' + item.dimension.height}</div>
+        <div className='parking-address'>
+          <span className='pa'>{item.parking_address}</span>
         </div>
+        <div className='production-year'>{item.production_year}</div>
+        <div className='status'>{item.status}</div>
+        <div className='description'>{item.description}</div>
       </div>
     )
   }
@@ -131,15 +133,15 @@ export class TruckTable extends Component {
             <div className='chips'>
               <Chip onClose={() => this.setState({ searchCriteria: null })} label={`Searching by: Keyword`} />
             </div>
-          ) : (<span>Truck List</span>)}
+          ) : (<span className='head-title'>Truck List</span>)}
           <div className='right-btns'>
             <Switch onChange={isAll => this.onSwitch(isAll)} checkedInitially={false} label1='All Trucks' label2='New Trucks' />
           </div>
         </div>
 
         <div className='main-table'>
-          <div>
-            {/* Table Header */}
+          {/* Table Header */}
+          <div className='inner-content-wrapper'>
             <div className='table-header'>
               {TABLE_SECTIONS.map((item, idx) => (
                 <div onClick={() => item.icon ? this.onSort(item.id) : null} key={idx} className={classnames('header-item', item.cls)}>

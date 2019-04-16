@@ -16,9 +16,7 @@ type Props = {
 }
 
 const TAB_ITEMS = [
-  { id: 'dashboard', name: i18next.t('tab_bar.dashboard') },
-  { id: 'purchase-request', name: i18next.t('tab_bar.pro') },
-  { id: 'info', name: i18next.t('tab_bar.info') }
+  { id: 'dashboard', name: i18next.t('tab_bar.dashboard') }
 ]
 
 export class AuthenLayout extends Component<Props> {
