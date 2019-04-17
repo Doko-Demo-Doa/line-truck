@@ -77,6 +77,8 @@ export const CustomInput = ({ label, type, multiline, className, inputClassName,
           {type === 'meta' && <div className='meta'>{metaValue}</div>}
         </div>
 
+        {type === 'input-multiline' && <div className='char-counter'>{`${value ? value.length : 0} / ${props.maxLength}`}</div>}
+
         <div className={classnames('custom-input-error-message', error ? 'visible' : 'hidden')}>{errorMessage}</div>
       </>
     </WithDropdown>

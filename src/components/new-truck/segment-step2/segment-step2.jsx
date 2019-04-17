@@ -1,28 +1,15 @@
 import React, { Component } from 'react'
-import { union } from 'lodash'
-import { Checkbox } from 'components/checkbox/checkbox'
+import { Formik } from 'formik'
 import { CustomInput } from 'components/custom-input/custom-input'
 import './segment-step2.scss'
 import { ButtonMain } from 'components/button/button-main'
-import { localCache, KeySet } from '../../../utils/utils-cache'
+
+const validator = values => {
+  let errors = {}
+  return errors
+}
 
 export class SegmentStep2 extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      enteredEmails: [],
-      me: true,
-      someoneElse: false
-    }
-    this.auth = localCache.get(KeySet.AUTH)
-  }
-
-  state = {
-    enteredEmails: [],
-    me: true,
-    someoneElse: false
-  }
-
   onChange = chips => {
     this.setState({ enteredEmails: chips })
   }
@@ -32,24 +19,55 @@ export class SegmentStep2 extends Component {
   }
 
   render () {
-    const { onSubmit } = this.props
-    const { enteredEmails, me, someoneElse } = this.state
+    // const { onSubmit } = this.props
 
     return (
-      <div className='step-2-document'>
-        <div className='head'>Who would you like us to send the response to?</div>
-        <Checkbox checked={me} onChange={() => this.setState({ me: !me })} label='Me' />
-        <Checkbox checked={someoneElse} onChange={() => this.setState({ someoneElse: !someoneElse })} label='Someone else' />
-        <div style={{ height: '40px' }} />
-        <CustomInput value={this.auth.email} className='custom-input-step2' maxLength={15} disabled placeholder='' type='input' label='Your Name*' />
-        <CustomInput value={`${this.auth.given_name} ${this.auth.family_name}`} className='custom-input-step2' maxLength={15} disabled placeholder='' type='input' label='Your Email Address*' />
+      <Formik
+        onSubmit={values => this.attemptSubmit(values)}
+        validate={validator}
+        initialValues={{
+          truckPlate: '',
+          parkingAddress: null,
+          description: null
+        }}>
+        {({ values, handleSubmit, handleChange, setFieldValue, errors }) => {
+          return (
+            <div className='step-2-document'>
+              <div className='head'>We need a bit more information. How about your vehicle?</div>
+              <CustomInput
+                name='truckPlate'
+                onChange={handleChange}
+                value={values.truckPlate}
+                className='custom-input-step2'
+                maxLength={15} placeholder='' type='input' label='Truck plate*' />
 
-        <div className='footer-area'>
-          <div>* These fields are mandatory</div>
-          <ButtonMain disabled={!me && !someoneElse} onClick={() => onSubmit(union(enteredEmails, me ? [this.auth.email] : []))} title='Submit' />
-        </div>
+              <CustomInput
+                name='parkingAddress'
+                value={values.parkingAddress}
+                onChange={handleChange}
+                maxLength={500} placeholder=''
+                type='input-multiline' className='segment-input pa-input'
+                inputClassName='textarea-inside' label='Parking address*' />
 
-      </div>
+              <div style={{ height: '40px' }} />
+
+              <CustomInput
+                name='description'
+                value={values.description}
+                onChange={handleChange}
+                maxLength={200} placeholder=''
+                type='input-multiline' className='segment-input desc-input'
+                inputClassName='textarea-inside' label='Description' />
+
+              <div className='footer-area'>
+                <div>* These fields are mandatory</div>
+                <ButtonMain title='Submit' />
+              </div>
+            </div>
+          )
+        }}
+
+      </Formik>
     )
   }
 }

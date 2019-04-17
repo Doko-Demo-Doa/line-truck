@@ -8,38 +8,26 @@
   align-items: flex-start;
   height: 100%;
 
-  .chip-input-root {
-    width: 100%;
-    max-width: 348px;
-    min-height: 140px;
-    margin-bottom: 16px;
-    border: 1px solid $color-gray-medium;
-    border-radius: 3px;
-    padding: 6px 7px;
-    
-    .WAMuiChipInput-inkbar-12 {
-      &::before {
-        position: unset;
-      }
-  
-      &::after {
-        position: unset;
-      }
-    }
-
-    span {
-      font-size: 14px;
-    }
-  }
-
   .subheadline {
     font-family: $font-standard-medium;
     margin-bottom: 10px;
   }
 
-  #react-autowhatever-1 {
-    span {
-      display: block !important;
+  .pa-input {
+    margin-bottom: 10px;
+
+    .textarea-inside {
+      padding: 8px 12px;
+      height: 92px;
+    }
+  }
+
+  .desc-input {
+    margin-bottom: 54px;
+
+    .textarea-inside {
+      padding: 8px 12px;
+      height: 92px;
     }
   }
 

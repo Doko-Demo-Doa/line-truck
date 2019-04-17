@@ -42,6 +42,13 @@ $inner-input-height: 38px;
     }
   }
 
+  .char-counter {
+    color: $color-gray-semihigh;
+    text-align: right;
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
   .input-inside {
     display: flex;
     align-items: center;

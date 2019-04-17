@@ -33,31 +33,17 @@ export class SegmentStep1 extends Component {
     console.log(props)
     super(props)
     this.state = {
-      price: false,
-      documents: false,
-      leadTimeAvailibility: false,
       suggestions: ['Nguyen Van A', 'Nguyen Van B', 'Nguyen Van C'],
       statuses: ['In-use', 'New', 'Stopped']
     }
   }
 
-  onChangeBox (type: number): void {
-    this.props.onChangeActiveBox({ [type]: !this.state[type] })
-    this.setState({ [type]: !this.state[type] })
-  }
-
-  onChangeDocumentRequesting (setFieldValue: Function, fullObj: Object, fieldName: string, value: boolean) {
-    const data = { ...fullObj, [fieldName]: value }
-    setFieldValue('documentRequesting', data)
-    this.props.onAddExtraData(data)
-  }
-
   attemptSubmit (values) {
-    console.log(values)
+    this.props.onSubmit(values)
   }
 
   render () {
-    const { suggestions, price, documents, statuses } = this.state
+    const { suggestions, statuses } = this.state
 
     return (
       <div className='segment-step1'>
@@ -104,7 +90,7 @@ export class SegmentStep1 extends Component {
                   <div className='footer-area'>
                     <div>* These fields are mandatory</div>
                     <ButtonMain
-                      disabled={(!price && !documents) || !isEmpty(errors)}
+                      disabled={!isEmpty(errors)}
                       onClick={handleSubmit} title='Go to step 2' />
                   </div>
                 </>

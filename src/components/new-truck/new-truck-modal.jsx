@@ -23,14 +23,6 @@ export class NewTruckModal extends Component {
     if (activeBoxId === 2) return 'lead-time'
   }
 
-  onAddExtraData (d: Object) {
-    this.setState({
-      documentTypes: Object.entries(d)
-        .map(([key, value]) => ({ key, value }))
-        .filter(n => n.value === true)
-    })
-  }
-
   async onSubmit (emails: Array<string>) {
     // modals.open({ content: <RFISent /> })
   }
@@ -50,7 +42,7 @@ export class NewTruckModal extends Component {
           <div className='new-truck-title'>New Truck Info</div>
 
           <div className='info-item full'>
-            <div className='head'>Product Number:</div>
+            <div className='head'>Driver name:</div>
             <div>10003940</div>
           </div>
 
@@ -91,10 +83,10 @@ export class NewTruckModal extends Component {
           <div className='icon-wrapper'>
             <CloseNoOutlineIcon onClick={() => modals.close()} className='ico' />
           </div>
-          {step === 1 ? <SegmentStep1 onChangeActiveBox={v => this.setState(v)} onAddExtraData={d => this.onAddExtraData(d)} onSubmit={(values) => {
+          {step === 1 ? <SegmentStep1 onSubmit={(values) => {
             this.setState({ step: 2 })
             this.params = values
-          }} {...this.props} /> : <SegmentStep2 type={this.getNextStep()} onSubmit={emails => this.onSubmit(emails)} {...this.props} />}
+          }} {...this.props} /> : <SegmentStep2 onSubmit={emails => this.onSubmit(emails)} {...this.props} />}
         </div>
       </div>
     )
