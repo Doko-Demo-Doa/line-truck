@@ -64,6 +64,8 @@ import IconLoginArrow from '../assets/icons/icon-login-arrow-white.svg'
 import IconCloseNoOutline from '../assets/icons/icon-close-no-outline.svg'
 import IconPaperplane from '../assets/icons/icon-paperplane.svg'
 import IconQuestion from '../assets/icons/icon-question.svg'
+import IconTruckBlack from '../assets/icons/icon-truck-black.svg'
+import IconTruckWhite from '../assets/icons/icon-truck-white.svg'
 
 export const LineLogoIcon = ({ className }) => (
   <img src={IconLineLogo} className={className} alt='' />
@@ -216,4 +218,8 @@ export const PaperplaneIcon = ({ className, onClick }) => (
 
 export const QuestionIcon = ({ className, onClick }) => (
   <img src={IconQuestion} className={className} onClick={onClick} alt='' />
+)
+
+export const TruckIcon = ({ className, black, onClick }) => (
+  <img src={black ? IconTruckBlack : IconTruckWhite} className={className} onClick={onClick} alt='' />
 )

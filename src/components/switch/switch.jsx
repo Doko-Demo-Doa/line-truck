@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
 import './switch.scss'
-import { PackageIcon, StarIcon } from 'components/icon'
+import { StarIcon, TruckIcon } from 'components/icon'
 
 type Props = {
   checkedInitially: boolean,
@@ -35,7 +35,7 @@ export class Switch extends Component<Props> {
     return (
       <div className={classnames('switch-wrapper', className)} onClick={() => this.onChange()}>
         <div className={classnames('inner', checked ? 'active' : '')}>
-          <PackageIcon black={!checked} />
+          <TruckIcon black={!checked} />
           <span className={classnames(checked ? 'active-text' : '')}>{label1}</span>
         </div>
         <div className={classnames('inner', !checked ? 'active' : '')}>

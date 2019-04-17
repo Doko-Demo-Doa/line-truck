@@ -22,6 +22,11 @@
     z-index: 3;
     transition: background-color 0.3s;
 
+    img {
+      width: 18px;
+      height: 18px;
+    }
+
     span {
       position: relative;
       color: $color-black-primary;
