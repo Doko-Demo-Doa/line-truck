@@ -140,7 +140,7 @@ export class TruckTable extends Component {
             </div>
           ) : (<span className='head-title'>Truck List</span>)}
           <div className='right-btns'>
-            <ButtonMain className='add-truck-btn' title='+ Add new truck' />
+            <ButtonMain onClick={() => this.onAddTruck()} className='add-truck-btn' title='+ Add new truck' />
             <Switch onChange={isAll => this.onSwitch(isAll)} checkedInitially={false} label1='All Trucks' label2='New Trucks' />
           </div>
         </div>

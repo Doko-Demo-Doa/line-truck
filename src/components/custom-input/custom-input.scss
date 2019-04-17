@@ -53,7 +53,7 @@ $inner-input-height: 38px;
 
     padding-left: 16px;
     height: $inner-input-height;
-    transition: 0.3s all linear;
+    transition: 0.1s all linear;
 
     &:focus-within {
       border: 1px solid $color-dark-green !important;

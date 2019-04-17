@@ -43,11 +43,11 @@ export class NewTruckModal extends Component {
         <div className='left-column'>
           <div className='new-truck-title'>New truck information</div>
           <div className='new-truck-subtitle'>(Step 1 of 2)</div>
-          <div className='new-truck-subtitle2'>Need some more information? Ok, please fill in the form details and the team will get back to you</div>
+          <div className='new-truck-subtitle2'>First, we need some information about your new truck detail. Please use this wizard to process.</div>
 
           <div className='separator' />
 
-          <div className='new-truck-title'>Sodium Hypochlorite</div>
+          <div className='new-truck-title'>New Truck Info</div>
 
           <div className='info-item full'>
             <div className='head'>Product Number:</div>

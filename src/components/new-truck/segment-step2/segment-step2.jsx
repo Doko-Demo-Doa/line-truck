@@ -4,9 +4,6 @@ import { Checkbox } from 'components/checkbox/checkbox'
 import { CustomInput } from 'components/custom-input/custom-input'
 import './segment-step2.scss'
 import { ButtonMain } from 'components/button/button-main'
-// import { isValidEmail } from '../../../utils/utils-validation'
-import ChipInput from 'material-ui-chip-input'
-import { isValidEmail } from '../../../utils/utils-validation'
 import { localCache, KeySet } from '../../../utils/utils-cache'
 
 export class SegmentStep2 extends Component {
@@ -46,17 +43,6 @@ export class SegmentStep2 extends Component {
         <div style={{ height: '40px' }} />
         <CustomInput value={this.auth.email} className='custom-input-step2' maxLength={15} disabled placeholder='' type='input' label='Your Name*' />
         <CustomInput value={`${this.auth.given_name} ${this.auth.family_name}`} className='custom-input-step2' maxLength={15} disabled placeholder='' type='input' label='Your Email Address*' />
-
-        <div className='subheadline'>Other Email Addresses*</div>
-        {someoneElse && <ChipInput
-          onDelete={this.onRemove}
-          onBeforeAdd={value => isValidEmail(value)}
-          value={enteredEmails}
-          classes={{
-            root: 'chip-input-root'
-          }}
-          onChange={(chips) => this.onChange(chips)}
-        />}
 
         <div className='footer-area'>
           <div>* These fields are mandatory</div>

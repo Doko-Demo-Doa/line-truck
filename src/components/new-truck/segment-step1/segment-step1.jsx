@@ -5,7 +5,19 @@ import './segment-step1.scss'
 import { Checkbox } from 'components/checkbox/checkbox'
 import { CustomInput } from 'components/custom-input/custom-input'
 import { ButtonMain } from 'components/button/button-main'
-import { localCache, KeySet } from '../../../utils/utils-cache'
+
+const CARGO_TYPES = [
+  'Computer',
+  'Electronic',
+  'Vegetable',
+  'Medicine',
+  'Animal',
+  'Metal',
+  'Chemical',
+  'Frozen Liquid',
+  'Clothes',
+  'Shoes'
+]
 
 const validator = values => {
   let errors = {}
@@ -24,7 +36,8 @@ export class SegmentStep1 extends Component {
       price: false,
       documents: false,
       leadTimeAvailibility: false,
-      suggestions: ['13040 - Wax Sales', '16484 - Wax Laboratory Services', '16484 - Wax Customer Care']
+      suggestions: ['Nguyen Van A', 'Nguyen Van B', 'Nguyen Van C'],
+      statuses: ['In-use', 'New', 'Stopped']
     }
   }
 
@@ -40,49 +53,11 @@ export class SegmentStep1 extends Component {
   }
 
   attemptSubmit (values) {
-    const { onSubmit, productNumber, packagingSize, productDescription } = this.props
     console.log(values)
-    const auth = localCache.get(KeySet.AUTH)
-
-    let params = {
-      type: 'RFI',
-      createdBy: auth.sub,
-      createdByName: `${auth.given_name} ${auth.family_name}`,
-      countryCode: auth.country,
-      categories: values.categories,
-      productNo: productNumber,
-      productName: productDescription,
-      packaging: packagingSize,
-      businessUnit: 'Kg',
-      comments: values.comments
-    }
-    params.fields = []
-    if (values.categories.includes('PRICE')) {
-      params.fields = [
-        { fieldKey: 'QUANTITY', value: values.quantity },
-        { fieldKey: 'INCO_TERMS', value: values.incoterm },
-        { fieldKey: 'MODE_OF_SHIPMENT', value: values.modeOfTransport },
-        { fieldKey: 'PORT_OF_DISCHARGE', value: values.portOfDischarge }
-      ]
-    }
-    if (values.categories.includes('DOCUMENT')) {
-      params.fields = [
-        ...params.fields,
-        { fieldKey: 'DOCUMENT_REQUESTING', value: Object.entries(values.documentRequesting).filter(n => n[1] === true).map(n => n[0]).join(',') }
-      ]
-    }
-    if (values.categories.includes('LTA')) {
-      params.fields = [
-        ...params.fields,
-        { fieldKey: 'QUANTITY', value: values.quantity }
-      ]
-    }
-    console.log(params)
-    onSubmit(params)
   }
 
   render () {
-    const { incoTerms, modesOfTransport, suggestions, price, documents, leadTimeAvailibility } = this.state
+    const { suggestions, price, documents, statuses } = this.state
 
     return (
       <div className='segment-step1'>
@@ -90,81 +65,46 @@ export class SegmentStep1 extends Component {
           onSubmit={values => this.attemptSubmit(values)}
           validate={validator}
           initialValues={{
-            type: 'RFI',
-            businessUnit: null,
-            subTypes: [],
-            incoterm: null,
-            quantity: null,
-            modeOfTransport: null,
-            portOfDischarge: null,
-            customFields: [],
-            comments: '',
-            documentRequesting: {
-              msds: false,
-              tds: false,
-              coa: false,
-              pds: false,
-              sls: false,
-              hscs: false
-            }
+            cargoTypes: [],
+            driverName: null,
+            status: null
           }}
         >
           {({ values, handleSubmit, handleChange, setFieldValue, errors }) => {
-            const { documentRequesting, businessUnit } = values
+            const { driverName } = values
             return (
                 <>
-                  <div className='headline'>What would you like to know?</div>
-                  <Checkbox checked={price} onChange={v => {
-                    this.onChangeBox('price')
-                    setFieldValue('categories', v ? union(values.categories, ['PRICE']) : pull(values.categories, 'PRICE'))
-                  }} label='Price' />
-                  <Checkbox checked={documents} onChange={(v) => {
-                    this.onChangeBox('documents')
-                    setFieldValue('categories', v ? union(values.categories, ['DOCUMENT']) : pull(values.categories, 'DOCUMENT'))
-                  }} label='Documents' />
-                  <Checkbox checked={leadTimeAvailibility} onChange={(v) => {
-                    this.onChangeBox('leadTimeAvailibility')
-                    setFieldValue('categories', v ? union(values.categories, ['LTA']) : pull(values.categories, 'LTA'))
-                  }} label={`Lead Time & Availability`} />
+                  <div className='headline'>Please choose cargo type (Up to 10)</div>
+                  <>
+                    {CARGO_TYPES.map((item, idx) => (
+                      <Checkbox key={idx} checked={values.cargoTypes.find(n => n === item)} onChange={v => {
+                        setFieldValue('cargoTypes', v ? union(values.cargoTypes, [item]) : pull(values.cargoTypes, item))
+                      }} label={item} />
+                    ))}
+                  </>
 
                   <div style={{ height: 46 }} />
 
                   <CustomInput
                     maxLength={32}
                     onChange={handleChange}
-                    name='businessUnit'
-                    placeholder='Enter your business unit'
-                    type='input-suggestion' onSelectSuggestion={text => setFieldValue('businessUnit', text)}
-                    value={businessUnit}
-                    suggestions={suggestions} className='segment-input business-input' label='Your business unit *' />
-                  {documents && <>
-                    <div className='headline'>What would you like to know?</div>
-                    <Checkbox checked={documentRequesting.msds} onChange={v => this.onChangeDocumentRequesting(setFieldValue, documentRequesting, 'msds', v)} label='MSDS' />
-                    <Checkbox checked={documentRequesting.tds} onChange={v => this.onChangeDocumentRequesting(setFieldValue, documentRequesting, 'tds', v)} label='TDS' />
-                    <Checkbox checked={documentRequesting.coa} onChange={v => this.onChangeDocumentRequesting(setFieldValue, documentRequesting, 'coa', v)} label={`COA`} />
-                    <Checkbox checked={documentRequesting.pds} onChange={v => this.onChangeDocumentRequesting(setFieldValue, documentRequesting, 'pds', v)} label={`PDS`} />
-                    <Checkbox checked={documentRequesting.sls} onChange={v => this.onChangeDocumentRequesting(setFieldValue, documentRequesting, 'sls', v)} label={`Shelf Life Statement`} />
-                    <Checkbox checked={documentRequesting.hscs} onChange={v => this.onChangeDocumentRequesting(setFieldValue, documentRequesting, 'hscs', v)} label={`HS code statement`} />
-                    <div style={{ height: 36 }} />
-                  </>}
+                    name='driverName'
+                    placeholder='Adam Sanders'
+                    type='input-suggestion' onSelectSuggestion={text => setFieldValue('driverName', text)}
+                    value={driverName}
+                    suggestions={suggestions} className='segment-input business-input' label='Driver name *' />
 
                   <div style={{ flexGrow: 2 }} />
-                  {(price || leadTimeAvailibility) && <CustomInput value={values.quantity} onChange={e => setFieldValue('quantity', e.target.value)} maxLength={15} placeholder='0' type='input' className='segment-input' unit='KG' label='Quantity*' />}
 
-                  {price && <>
-                    <CustomInput placeholder='0' type='select' className='segment-input' value={values.incoterm} onChange={idx => setFieldValue('incoterm', incoTerms[idx])} options={incoTerms} label='Inco terms*' />
-                    <CustomInput placeholder='0' type='select' className='segment-input' value={values.modeOfTransport} onChange={idx => {
-                      setFieldValue('modeOfTransport', modesOfTransport[idx])
-                    }} options={modesOfTransport} label='Mode of shipment*' />
-                    <CustomInput onChange={handleChange} name='portOfDischarge' placeholder='Enter Port of Discharge' options={['CGI 01', 'LGI 02']} type='input' className='segment-input' label='Port of discharge*' />
-                  </>}
-
-                  <CustomInput onChange={e => setFieldValue('comments', e.target.value)} maxLength={250} placeholder='' type='input-multiline' className='segment-input comment-input' inputClassName='textarea-inside' label='Comments' />
+                  <CustomInput
+                    type='select'
+                    className='segment-input' value={values.status}
+                    onChange={idx => setFieldValue('status', statuses[idx])} options={statuses} label='Status*' />
 
                   <div className='footer-area'>
                     <div>* These fields are mandatory</div>
                     <ButtonMain
-                      disabled={(!price && !documents && !leadTimeAvailibility) || !isEmpty(errors)}
+                      disabled={(!price && !documents) || !isEmpty(errors)}
                       onClick={handleSubmit} title='Go to step 2' />
                   </div>
                 </>
