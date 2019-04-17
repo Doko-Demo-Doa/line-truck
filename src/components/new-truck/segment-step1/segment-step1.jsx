@@ -1,30 +1,14 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
-import { sortBy, isEmpty, union, pull } from 'lodash'
+import { isEmpty, union, pull } from 'lodash'
 import './segment-step1.scss'
 import { Checkbox } from 'components/checkbox/checkbox'
 import { CustomInput } from 'components/custom-input/custom-input'
 import { ButtonMain } from 'components/button/button-main'
-import { apiEnterprise } from '../../../api/api-enterprise'
 import { localCache, KeySet } from '../../../utils/utils-cache'
-import { isValidUnit } from '../../../utils/utils-validation'
-import { removeAllNonNumeric } from '../../../utils/utils-formatting'
 
 const validator = values => {
   let errors = {}
-  if (!values.businessUnit) errors.businessUnit = 'Please enter business unit'
-  if (values.categories.includes('PRICE')) {
-    if (!values.quantity || !isValidUnit(values.quantity)) errors.quantity = 'Please enter quantity'
-    if (!values.incoterm) errors.incoterm = 'Please enter incoterm'
-    if (!values.modeOfTransport) errors.modeOfTransport = 'Please choose'
-    if (!values.portOfDischarge) errors.portOfDischarge = 'Please enter'
-  }
-  if (values.categories.includes('DOCUMENT')) {
-    if (!Object.values(values.documentRequesting).includes(true)) errors.documentRequesting = 'Please choose at least one document type'
-  }
-  if (values.categories.includes('LTA')) {
-    if (!values.quantity) errors.quantity = 'Please enter quantity'
-  }
   return errors
 }
 
@@ -41,22 +25,6 @@ export class SegmentStep1 extends Component {
       documents: false,
       leadTimeAvailibility: false,
       suggestions: ['13040 - Wax Sales', '16484 - Wax Laboratory Services', '16484 - Wax Customer Care']
-    }
-  }
-
-  async componentDidMount (): void {
-    try {
-      const [incoTerms, modesOfTransport] = await Promise.all([
-        apiEnterprise.getIncoTermsList(),
-        apiEnterprise.getModesOfTransport('AU')
-      ])
-      if (incoTerms.error) return alert(incoTerms.error)
-      this.setState({
-        incoTerms: sortBy(incoTerms.data, 'key').map(n => n.key),
-        modesOfTransport: sortBy(modesOfTransport.data, 'value').map(n => n.value)
-      })
-    } catch (_) {
-      console.log(_)
     }
   }
 
@@ -181,7 +149,7 @@ export class SegmentStep1 extends Component {
                   </>}
 
                   <div style={{ flexGrow: 2 }} />
-                  {(price || leadTimeAvailibility) && <CustomInput value={values.quantity} onChange={e => setFieldValue('quantity', removeAllNonNumeric(e.target.value))} maxLength={15} placeholder='0' type='input' className='segment-input' unit='KG' label='Quantity*' />}
+                  {(price || leadTimeAvailibility) && <CustomInput value={values.quantity} onChange={e => setFieldValue('quantity', e.target.value)} maxLength={15} placeholder='0' type='input' className='segment-input' unit='KG' label='Quantity*' />}
 
                   {price && <>
                     <CustomInput placeholder='0' type='select' className='segment-input' value={values.incoterm} onChange={idx => setFieldValue('incoterm', incoTerms[idx])} options={incoTerms} label='Inco terms*' />

@@ -1,7 +1,7 @@
 @import '~styles/colors';
 @import '~styles/variables';
 
-.rfi-modal {
+.new-truck-modal {
   transition: all 1s;
   border-radius: 4px;
   display: flex;
@@ -23,18 +23,18 @@
       margin-bottom: 24px;
     }
 
-    .rfi-title {
+    .new-truck-title {
       font-size: 24px;
       font-family: $font-standard-bold;
     }
 
-    .rfi-subtitle {
+    .new-truck-subtitle {
       font-size: 22px;
       font-family: $font-standard-regular;
       margin-bottom: 28px;
     }
 
-    .rfi-subtitle2 {
+    .new-truck-subtitle2 {
       margin-bottom: 24px;
     }
 

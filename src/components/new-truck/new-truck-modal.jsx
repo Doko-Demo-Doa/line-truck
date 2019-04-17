@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import './rfi-modal.scss'
+import './new-truck-modal.scss'
 import { SegmentStep1 } from './segment-step1/segment-step1'
 import { SegmentStep2 } from './segment-step2/segment-step2'
-import { rfiTypeMapper, documentTypesMapper } from '../../utils/utils-data'
-import { apiRFI } from '../../api/api-rfi'
 import { CloseNoOutlineIcon } from 'components/icon'
 import { modals } from 'components/modals/modal-registry'
-import { RFISent } from 'components/modals/modal-layouts/rfi-sent'
+// import { RFISent } from 'components/modals/modal-layouts/rfi-sent'
 
-export class RFIModal extends Component {
+export class NewTruckModal extends Component {
   params = {}
 
   state = {
@@ -34,32 +32,22 @@ export class RFIModal extends Component {
   }
 
   async onSubmit (emails: Array<string>) {
-    const apiParams = {
-      ...this.params,
-      emails
-    }
-    console.log(apiParams)
-    const resp = await apiRFI.postRequest(apiParams)
-    console.log(resp)
-    if (resp.rfiNo) {
-      modals.close()
-      setTimeout(() => modals.open({ content: <RFISent /> }))
-    }
+    // modals.open({ content: <RFISent /> })
   }
 
   render () {
-    const { step, documentTypes, price, documents, leadTimeAvailibility } = this.state
+    const { step, documentTypes, documents } = this.state
 
     return (
-      <div className='rfi-modal'>
+      <div className='new-truck-modal'>
         <div className='left-column'>
-          <div className='rfi-title'>Request for information</div>
-          <div className='rfi-subtitle'>(Step 1 of 2)</div>
-          <div className='rfi-subtitle2'>Need some more information? Ok, please fill in the form details and the team will get back to you</div>
+          <div className='new-truck-title'>New truck information</div>
+          <div className='new-truck-subtitle'>(Step 1 of 2)</div>
+          <div className='new-truck-subtitle2'>Need some more information? Ok, please fill in the form details and the team will get back to you</div>
 
           <div className='separator' />
 
-          <div className='rfi-title'>Sodium Hypochlorite</div>
+          <div className='new-truck-title'>Sodium Hypochlorite</div>
 
           <div className='info-item full'>
             <div className='head'>Product Number:</div>
@@ -88,15 +76,14 @@ export class RFIModal extends Component {
 
           <div className='info-item full conditional'>
             <div className='head'>Requested Information:</div>
-            {price && <div>{rfiTypeMapper('price')}</div>}
-            {documents && <div>{rfiTypeMapper('documents')}</div>}
-            {leadTimeAvailibility && <div>{rfiTypeMapper('leadTimeAvailibility')}</div>}
+            <div>Test</div>
+            <div>Test</div>
           </div>
 
           {documents && <div className='info-item full conditional last'>
             <div className='head'>Document Types:</div>
             {documentTypes.map((item, idx) => (
-              <div key={idx}>{`- ${documentTypesMapper(item.key)}`}</div>
+              <div key={idx}>{`- aaa`}</div>
             ))}
           </div>}
         </div>

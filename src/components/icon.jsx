@@ -16,6 +16,8 @@ import IconStar from '../assets/icons/icon-star.svg'
 import IconStarBlack from '../assets/icons/icon-star-black.svg'
 import IconCloseBlack from '../assets/icons/icon-close-black.svg'
 import IconFlask from '../assets/icons/icon-flask-black.svg'
+import IconCalendar from '../assets/icons/icon-calendar.svg'
+import IconCalendarBlack from '../assets/icons/icon-calendar-black.svg'
 
 import IconBoxBlack from '../assets/icons/icon-box-black.svg'
 import IconBox2Black from '../assets/icons/icon-box2-black.svg'
@@ -177,6 +179,10 @@ export const SlowmoversIcon = ({ className }) => (
 
 export const IntercoIcon = ({ className }) => (
   <img src={IconInterco} className={className} alt='' />
+)
+
+export const CalendarIcon = ({ className, black }) => (
+  <img src={black ? IconCalendarBlack : IconCalendar} className={className} alt='' />
 )
 
 export const SearchIcon = ({ className }) => (

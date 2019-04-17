@@ -9,6 +9,8 @@ import { AppEventEmitter } from 'services/app-event-emitter'
 import './truck-table.scss'
 import sampleTrucks from './sample-data.json'
 import { ButtonMain } from 'components/button/button-main'
+import { modals } from 'components/modals/modal-registry'
+import { NewTruckModal } from 'components/new-truck/new-truck-modal'
 
 const TABLE_SECTIONS = [
   {
@@ -86,18 +88,20 @@ export class TruckTable extends Component {
 
   }
 
+  onAddTruck () {
+    modals.open({
+      content: <NewTruckModal onClose={() => {
+        modals.close()
+      }} />
+    })
+  }
+
   onSort (type) {
     const { descending, productsFiltered, sortType } = this.state
     this.setState({ descending: !descending }, () => {
       const sortedArray = (type === sortType) ? this.state.descending ? sortBy(productsFiltered, type).reverse() : sortBy(productsFiltered, type) : sortBy(productsFiltered, type).reverse()
       this.setState({ sortType: type, productsFiltered: sortedArray })
     })
-  }
-
-  resetArgs () {
-    this.eol = false
-    this.loading = false
-    this.params.page = 0
   }
 
   renderItem = (item, idx) => {
