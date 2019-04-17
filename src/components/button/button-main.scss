@@ -2,7 +2,7 @@
 @import '~styles/variables';
 
 .button-main {
-  padding: 24px 10px;
+  padding: 18px 10px;
   user-select: none;
   cursor: pointer;
   display: flex;
@@ -22,12 +22,12 @@
 }
 
 .button-main-disabled {
-  background-color: $color-light-grey-blue;
+  background-color: $color-gray-medium;
   color: $color-white;
-  border: 1px solid $color-light-grey-blue;
+  border: 1px solid $color-gray-medium;
   cursor: default;
 
   &:hover {
-    background-color: $color-light-grey-blue;
+    background-color: $color-gray-medium;
   }
 }

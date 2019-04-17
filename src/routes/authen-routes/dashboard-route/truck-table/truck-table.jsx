@@ -8,6 +8,7 @@ import { Chip } from 'components/chip/chip'
 import { AppEventEmitter } from 'services/app-event-emitter'
 import './truck-table.scss'
 import sampleTrucks from './sample-data.json'
+import { ButtonMain } from 'components/button/button-main'
 
 const TABLE_SECTIONS = [
   {
@@ -135,6 +136,7 @@ export class TruckTable extends Component {
             </div>
           ) : (<span className='head-title'>Truck List</span>)}
           <div className='right-btns'>
+            <ButtonMain className='add-truck-btn' title='+ Add new truck' />
             <Switch onChange={isAll => this.onSwitch(isAll)} checkedInitially={false} label1='All Trucks' label2='New Trucks' />
           </div>
         </div>
