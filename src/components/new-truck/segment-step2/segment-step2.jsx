@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { CustomInput } from 'components/custom-input/custom-input'
+import { isEmpty } from 'lodash'
 import './segment-step2.scss'
 import { ButtonMain } from 'components/button/button-main'
+import { isValidPlate } from '../../../utils/utils-validation'
+import { truckPlateFormatter } from '../../../utils/utils-formatting'
 
 const validator = values => {
   let errors = {}
+  if (!isValidPlate(values.truckPlate)) errors.truckPlate = 'Please enter valid truck plate'
+  if (!values.parkingAddress) errors.parkingAddress = 'Please enter parking address'
   return errors
 }
 
 export class SegmentStep2 extends Component {
-  onChange = chips => {
-    this.setState({ enteredEmails: chips })
-  }
-
-  onRemove = value => {
-    this.setState({ enteredEmails: this.state.enteredEmails.filter(n => n !== value) })
-  }
-
   render () {
     // const { onSubmit } = this.props
 
@@ -36,13 +33,15 @@ export class SegmentStep2 extends Component {
               <div className='head'>We need a bit more information. How about your vehicle?</div>
               <CustomInput
                 name='truckPlate'
+                error={errors.truckPlate}
                 onChange={handleChange}
-                value={values.truckPlate}
+                value={truckPlateFormatter(values.truckPlate)}
                 className='custom-input-step2'
-                maxLength={15} placeholder='' type='input' label='Truck plate*' />
+                maxLength={9} placeholder='' type='input' label='Truck plate*' />
 
               <CustomInput
                 name='parkingAddress'
+                error={errors.parkingAddress}
                 value={values.parkingAddress}
                 onChange={handleChange}
                 maxLength={500} placeholder=''
@@ -61,7 +60,7 @@ export class SegmentStep2 extends Component {
 
               <div className='footer-area'>
                 <div>* These fields are mandatory</div>
-                <ButtonMain title='Submit' />
+                <ButtonMain disabled={!isEmpty(errors)} title='Submit' />
               </div>
             </div>
           )

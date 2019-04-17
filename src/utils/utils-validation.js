@@ -12,10 +12,12 @@ export function isValidIndex (number) {
   return true
 }
 
-export function isValidValidationCode (code) {
+export function isValidPlate (code: string) {
+  const rawCode = code.replace('-', '')
   if (!code) return false
-  if (code.length !== 6) return false
-  return (/^\d+$/.test(code))
+  if (rawCode.length !== 8) return false
+  if (!rawCode.charAt(2).match(/^[zA-Z]+$/)) return false
+  return (/^[0-9a-zA-Z]+$/.test(rawCode))
 }
 
 export function isValidPassword (password) {

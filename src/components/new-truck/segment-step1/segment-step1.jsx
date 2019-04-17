@@ -21,16 +21,14 @@ const CARGO_TYPES = [
 
 const validator = values => {
   let errors = {}
+  if (values.cargoTypes.length <= 0) errors.cargoTypes = 'Please choose at least one type'
+  if (!values.driverName) errors.driverName = 'Please enter driver name'
+  if (!values.status) errors.status = 'Please choose vehicle status'
   return errors
 }
 
-/**
- * Step 1 for all three RFI types.
- * Each checkbox has its own effect and sub-form.
- */
 export class SegmentStep1 extends Component {
   constructor (props) {
-    console.log(props)
     super(props)
     this.state = {
       suggestions: ['Nguyen Van A', 'Nguyen Van B', 'Nguyen Van C'],
@@ -40,6 +38,10 @@ export class SegmentStep1 extends Component {
 
   attemptSubmit (values) {
     this.props.onSubmit(values)
+  }
+
+  onUpdate (fieldName, fieldValue) {
+    this.props.onUpdate(fieldName, fieldValue)
   }
 
   render () {
@@ -56,7 +58,9 @@ export class SegmentStep1 extends Component {
             status: null
           }}
         >
-          {({ values, handleSubmit, handleChange, setFieldValue, errors }) => {
+          {({ values, handleSubmit, handleChange, isInitialValid, isValid, setFieldValue, errors }) => {
+            console.log(errors)
+            console.log(isValid)
             const { driverName } = values
             return (
                 <>
@@ -64,7 +68,9 @@ export class SegmentStep1 extends Component {
                   <>
                     {CARGO_TYPES.map((item, idx) => (
                       <Checkbox key={idx} checked={values.cargoTypes.find(n => n === item)} onChange={v => {
-                        setFieldValue('cargoTypes', v ? union(values.cargoTypes, [item]) : pull(values.cargoTypes, item))
+                        const output = v ? union(values.cargoTypes, [item]) : pull(values.cargoTypes, item)
+                        this.onUpdate('cargoTypes', output)
+                        setFieldValue('cargoTypes', output)
                       }} label={item} />
                     ))}
                   </>
@@ -73,10 +79,18 @@ export class SegmentStep1 extends Component {
 
                   <CustomInput
                     maxLength={32}
-                    onChange={handleChange}
+                    onChange={e => {
+                      this.onUpdate('driverName', e.target.value)
+                      setFieldValue('driverName', e.target.value)
+                    }}
+                    error={errors.driverName}
                     name='driverName'
                     placeholder='Adam Sanders'
-                    type='input-suggestion' onSelectSuggestion={text => setFieldValue('driverName', text)}
+                    type='input-suggestion'
+                    onSelectSuggestion={text => {
+                      this.onUpdate('driverName', text)
+                      setFieldValue('driverName', text)
+                    }}
                     value={driverName}
                     suggestions={suggestions} className='segment-input business-input' label='Driver name *' />
 
@@ -84,13 +98,17 @@ export class SegmentStep1 extends Component {
 
                   <CustomInput
                     type='select'
+                    error={errors.status}
                     className='segment-input' value={values.status}
-                    onChange={idx => setFieldValue('status', statuses[idx])} options={statuses} label='Status*' />
+                    onChange={idx => {
+                      this.onUpdate('status', statuses[idx])
+                      setFieldValue('status', statuses[idx])
+                    }} options={statuses} label='Status*' />
 
                   <div className='footer-area'>
                     <div>* These fields are mandatory</div>
                     <ButtonMain
-                      disabled={!isEmpty(errors)}
+                      disabled={!isValid && !isEmpty(errors)}
                       onClick={handleSubmit} title='Go to step 2' />
                   </div>
                 </>

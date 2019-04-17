@@ -11,10 +11,9 @@ export class NewTruckModal extends Component {
 
   state = {
     step: 1,
-    price: false,
-    documents: false,
-    leadTimeAvailibility: false,
-    documentTypes: []
+    driverName: '',
+    status: '',
+    cargoTypes: []
   }
 
   getNextStep (activeBoxId: number = 0) {
@@ -28,7 +27,7 @@ export class NewTruckModal extends Component {
   }
 
   render () {
-    const { step, documentTypes, documents } = this.state
+    const { step, driverName, status, cargoTypes } = this.state
 
     return (
       <div className='new-truck-modal'>
@@ -43,50 +42,30 @@ export class NewTruckModal extends Component {
 
           <div className='info-item full'>
             <div className='head'>Driver name:</div>
-            <div>10003940</div>
+            <div>{driverName || '-'}</div>
           </div>
 
           <div className='info-item full'>
-            <div className='head'>Packaging:</div>
-            <div>10003940</div>
-          </div>
-
-          <div className='info-item float'>
-            <div className='head'>Dangerous:</div>
-            <div>Yes</div>
-          </div>
-
-          <div className='info-item float'>
-            <div className='head'>Hazardous:</div>
-            <div>Yes</div>
-          </div>
-
-          <div className='info-item float'>
-            <div className='head'>Restricted:</div>
-            <div>Yes</div>
+            <div className='head'>Status:</div>
+            <div>{status || '-'}</div>
           </div>
 
           <div className='info-item full conditional'>
             <div className='head'>Requested Information:</div>
-            <div>Test</div>
-            <div>Test</div>
+            {cargoTypes.map((item, idx) => <div key={idx}>{`- ${item}`}</div>)}
           </div>
 
-          {documents && <div className='info-item full conditional last'>
-            <div className='head'>Document Types:</div>
-            {documentTypes.map((item, idx) => (
-              <div key={idx}>{`- aaa`}</div>
-            ))}
-          </div>}
         </div>
         <div className='right-column'>
           <div className='icon-wrapper'>
             <CloseNoOutlineIcon onClick={() => modals.close()} className='ico' />
           </div>
-          {step === 1 ? <SegmentStep1 onSubmit={(values) => {
-            this.setState({ step: 2 })
-            this.params = values
-          }} {...this.props} /> : <SegmentStep2 onSubmit={emails => this.onSubmit(emails)} {...this.props} />}
+          {step === 1 ? <SegmentStep1
+            onUpdate={(fieldName, fieldValue) => this.setState({ [fieldName]: fieldValue })}
+            onSubmit={(values) => {
+              this.setState({ step: 2 })
+              this.params = values
+            }} {...this.props} /> : <SegmentStep2 onSubmit={emails => this.onSubmit(emails)} {...this.props} />}
         </div>
       </div>
     )
