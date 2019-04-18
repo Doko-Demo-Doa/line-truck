@@ -5,6 +5,7 @@ import { SegmentStep2 } from './segment-step2/segment-step2'
 import { CloseNoOutlineIcon } from 'components/icon'
 import { modals } from 'components/modals/modal-registry'
 import { RFISent } from 'components/modals/modal-layouts/rfi-sent'
+import { truckStatusMapper } from '../../utils/utils-data'
 // import { RFISent } from 'components/modals/modal-layouts/rfi-sent'
 
 export class NewTruckModal extends Component {
@@ -47,7 +48,7 @@ export class NewTruckModal extends Component {
 
           <div className='info-item full'>
             <div className='head'>Status:</div>
-            <div>{status || '-'}</div>
+            <div>{truckStatusMapper(status) || '-'}</div>
           </div>
 
           <div className='info-item full conditional'>

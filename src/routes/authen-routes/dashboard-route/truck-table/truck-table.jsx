@@ -11,6 +11,7 @@ import sampleTrucks from './sample-data.json'
 import { ButtonMain } from 'components/button/button-main'
 import { modals } from 'components/modals/modal-registry'
 import { NewTruckModal } from 'components/new-truck/new-truck-modal'
+import { truckStatusMapper } from '../../../../utils/utils-data'
 
 const TABLE_SECTIONS = [
   {
@@ -93,25 +94,27 @@ export class TruckTable extends Component {
       content: <NewTruckModal onClose={(values) => {
         // console.log(values)
         this.setState(prevState => {
+          const newProds = [...prevState.products, {
+            id: prevState.products.length + 1,
+            truck_plate: values.truckPlate,
+            cargo_type: values.cargoTypes,
+            truck_type: values.truckType,
+            driver: values.driverName,
+            production_year: values.productionYear,
+            price: parseInt(values.price),
+            dimension: {
+              length: parseFloat(values.vLength),
+              width: parseFloat(values.vWidth),
+              height: parseFloat(values.vHeight)
+            },
+            parking_address: values.parkingAddress,
+            status: truckStatusMapper(values.status),
+            description: values.description
+          }]
           return {
             ...prevState,
-            products: [...prevState.products, {
-              id: prevState.products.length + 1,
-              truck_plate: values.truckPlate,
-              cargo_type: values.cargoTypes,
-              truck_type: values.truckType,
-              driver: values.driverName,
-              price: parseInt(values.price),
-              dimension: {
-                length: parseFloat(values.vLength),
-                width: parseFloat(values.vWidth),
-                height: parseFloat(values.vHeight)
-              },
-              parking_address: values.parkingAddress,
-              productionYear: '2009',
-              status: values.status,
-              description: values.description
-            }]
+            products: newProds,
+            productsFiltered: newProds
           }
         }, () => console.log(this.state))
         modals.close()
@@ -133,18 +136,18 @@ export class TruckTable extends Component {
         <div className='truck-plate'>
           <span>{item.truck_plate || '000000'}</span>
         </div>
-        <div className='cargo-type'>
+        <div className='cargo-type content-padding'>
           {item.cargo_type.join(', ')}
         </div>
         <div className='driver-name'>{item.driver}</div>
         <div className='truck-type'>{`${item.truck_type} tons` || '-'}</div>
         <div className='price'>{item.price}</div>
         <div className='dimension'>{item.dimension.length + '-' + item.dimension.width + '-' + item.dimension.height}</div>
-        <div className='parking-address'>
+        <div className='parking-address content-padding'>
           <span className='pa'>{item.parking_address}</span>
         </div>
         <div title='Production Year' className='production-year'>{item.production_year}</div>
-        <div className='status'>{item.status}</div>
+        <div className='status'>{truckStatusMapper(item.status)}</div>
         <div className='description'>{item.description}</div>
       </div>
     )
