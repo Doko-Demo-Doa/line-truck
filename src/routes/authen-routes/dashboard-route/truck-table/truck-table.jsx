@@ -95,7 +95,7 @@ export class TruckTable extends Component {
         this.setState(prevState => {
           return {
             ...prevState,
-            products: prevState.products.push({
+            products: [...prevState.products, {
               id: prevState.products.length + 1,
               truck_plate: values.truckPlate,
               cargo_type: values.cargoTypes,
@@ -111,9 +111,9 @@ export class TruckTable extends Component {
               productionYear: '2009',
               status: values.status,
               description: values.description
-            })
+            }]
           }
-        }, () => console.log(values))
+        }, () => console.log(this.state))
         modals.close()
       }} />
     })

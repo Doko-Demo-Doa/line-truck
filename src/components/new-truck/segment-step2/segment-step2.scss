@@ -13,8 +13,17 @@
     margin-bottom: 10px;
   }
 
-  .dimensions {
+  .horizontal {
     display: flex;
+    width: 100%;
+
+    .truck-plate {
+      margin-right: 6px;
+    }
+
+    .price-input {
+      margin-right: 6px;
+    }
 
     .dimension.middle {
       margin: 0 4px;

@@ -52,7 +52,7 @@
 
     .inner-content-wrapper {
       overflow-x: scroll;
-      max-width: calc(100%  - 32px);
+      // max-width: calc(100%  - 32px);
 
       .table-header {
         @include table-header();
@@ -95,7 +95,7 @@
 
     // Column sizes:
     .truck-plate {
-      min-width: 120px;
+      min-width: 100px;
       width: 9%;
       display: flex;
       align-items: center;

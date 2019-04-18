@@ -32,39 +32,52 @@ export class SegmentStep2 extends Component {
           truckPlate: '',
           parkingAddress: '',
           description: '',
-          truckType: null
+          truckType: null,
+          productionYear: null
         }}>
         {({ values, handleSubmit, handleChange, setFieldValue, isValid, errors }) => {
           return (
             <div className='step-2-document'>
               <div className='head'>We need a bit more information. How about your vehicle?</div>
-              <CustomInput
-                name='truckPlate'
-                error={errors.truckPlate}
-                onChange={handleChange}
-                value={truckPlateFormatter(values.truckPlate)}
-                className='custom-input-step2'
-                maxLength={9} placeholder='' type='input' label='Truck plate*' />
+              <div className='horizontal'>
+                <CustomInput
+                  name='truckPlate'
+                  error={errors.truckPlate}
+                  onChange={handleChange}
+                  value={truckPlateFormatter(values.truckPlate)}
+                  className='truck-plate'
+                  maxLength={9} placeholder='' type='input' label='Truck plate*' />
 
-              <CustomInput
-                type='select'
-                error={errors.truckType}
-                className='segment-input' value={values.truckType}
-                onChange={idx => {
-                  setFieldValue('truckType', TRUCK_TYPES[idx])
-                }} options={TRUCK_TYPES} label='Truck Type*' />
+                <CustomInput
+                  type='select'
+                  error={errors.truckType}
+                  className='segment-input' value={values.truckType}
+                  onChange={idx => {
+                    setFieldValue('truckType', TRUCK_TYPES[idx])
+                  }} options={TRUCK_TYPES} label='Truck Type*' />
+              </div>
 
-              <CustomInput
-                maxLength={11}
-                onChange={e => setFieldValue('price', removeAllNonNumeric(e.target.value))}
-                error={errors.driverName}
-                placeholder='1,000,000'
-                type='input'
-                value={formatCurrency(values.price)}
-                unit='VND'
-                label='Price *' />
+              <div className='horizontal'>
+                <CustomInput
+                  maxLength={11}
+                  onChange={e => setFieldValue('price', removeAllNonNumeric(e.target.value))}
+                  error={errors.driverName}
+                  placeholder='1,000,000'
+                  className='price-input'
+                  type='input'
+                  value={formatCurrency(values.price)}
+                  unit='VND'
+                  label='Price *' />
 
-              <div className='dimensions'>
+                <CustomInput
+                  onChange={v => {
+                    console.log(v.format('YYYY'))
+                    setFieldValue('productionYear', v.format('YYYY'))
+                  }}
+                  value={values.productionYear} type='date' label='Production Year' />
+              </div>
+
+              <div className='horizontal'>
                 <CustomInput
                   label='Length*'
                   error={errors.vLength}

@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import { CalendarIcon, ArrowDownIcon } from 'components/icon'
 import Calendar from 'rc-calendar'
 import enUS from 'rc-calendar/lib/locale/en_US'
-import moment from 'moment'
 import './custom-input.scss'
+import 'rc-calendar/assets/index.css'
 import { WithDropdown } from '../../hocs/with-dropdown/with-dropdown'
 import { SelectionMenu } from 'components/selection-menu/selection-menu'
 import { SuggestionMenu } from 'components/suggestion-menu/suggestion-menu'
@@ -46,7 +46,7 @@ export const CustomInput = ({ label, type, multiline, className, inputClassName,
   const getDropdown = (closeFunc) => {
     switch (type) {
       case 'date':
-        return <Calendar locale={{ ...enUS, monthBeforeDate: true, monthFormat: 'MMMM' }} disabledDate={(m) => m.isBefore(moment())} onSelect={onChange} />
+        return <Calendar mode='year' locale={{ ...enUS }} onChange={onChange} />
       case 'select':
         return <SelectionMenu data={options} value={value} onChange={onChange} />
       case 'meta':
