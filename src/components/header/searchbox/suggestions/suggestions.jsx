@@ -24,7 +24,7 @@ const SuggestionItem = ({ text = '', query, type }) => {
   return (
     <div
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)} className='suggestion-item' onClick={() => alert(3434)}>
+      onMouseLeave={() => setHovered(false)} className='suggestion-item' onClick={() => alert(text)}>
       {getIcon()}
       <Highlighter
         highlightClassName={classnames('suggestion-item-highlighted', hovered ? 'force-white' : '')}
@@ -55,7 +55,7 @@ export class Suggestions extends Component {
     return (
       <div className={classnames('suggestions shadow', className)}>
         <div className='suggestions-tabs'>
-          {['Products', 'Suppliers', 'Vendors'].map((item, idx) => (
+          {['Drivers'].map((item, idx) => (
             <div key={idx} onClick={() => this.onChangeTab(idx, item)} className={classnames('s-tab', idx === activeIndex ? 's-tab-active' : '')}>
               {item}
               <span>10</span>

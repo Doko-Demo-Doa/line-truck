@@ -160,8 +160,11 @@
   }
 
   .table-footer {
-    padding: 15px 18px;
+    padding: 6px 18px;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-family: $font-standard-regular;
     color: $color-gray-semihigh;
     background-color: #fafafa;
@@ -170,6 +173,21 @@
     span {
       color: $color-gray-high;
       font-family: $font-standard-medium;
+    }
+
+    .paging {
+      display: flex;
+      align-items: center;
+
+      .txt {
+        margin-right: 12px;
+      }
+
+      .paging-btn {
+        width: 42px;
+        height: 22px;
+        margin: 0 6px;
+      }
     }
   }
 }

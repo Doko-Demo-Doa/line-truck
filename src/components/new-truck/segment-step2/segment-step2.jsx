@@ -59,7 +59,7 @@ export class SegmentStep2 extends Component {
 
               <div className='horizontal'>
                 <CustomInput
-                  maxLength={11}
+                  maxLength={13}
                   onChange={e => setFieldValue('price', removeAllNonNumeric(e.target.value))}
                   error={errors.driverName}
                   placeholder='1,000,000'

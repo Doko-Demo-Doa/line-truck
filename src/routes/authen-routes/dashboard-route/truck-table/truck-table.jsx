@@ -12,6 +12,7 @@ import { ButtonMain } from 'components/button/button-main'
 import { modals } from 'components/modals/modal-registry'
 import { NewTruckModal } from 'components/new-truck/new-truck-modal'
 import { truckStatusMapper } from '../../../../utils/utils-data'
+import { formatCurrency } from '../../../../utils/utils-formatting'
 
 const TABLE_SECTIONS = [
   {
@@ -74,9 +75,11 @@ export class TruckTable extends Component {
     this.list = React.createRef()
     this.state = {
       products: sampleTrucks,
-      productsFiltered: sampleTrucks,
+      productsFiltered: sampleTrucks.filter(n => n.production_year >= 2015),
       sortType: 'cargoType',
-      descending: true // Sorting with reversed order
+      descending: true, // Sorting with reversed order
+      pageNum: 1,
+      maxPage: 26
     }
   }
 
@@ -92,7 +95,7 @@ export class TruckTable extends Component {
   }
 
   async onSwitch (isAll) {
-
+    this.setState({ productsFiltered: isAll ? this.state.products : this.state.productsFiltered.filter(n => n.production_year >= 2015) })
   }
 
   onSort (type) {
@@ -149,7 +152,7 @@ export class TruckTable extends Component {
         </div>
         <div className='driver-name'>{item.driver}</div>
         <div className='truck-type'>{`${item.truck_type} tons` || '-'}</div>
-        <div className='price'>{item.price}</div>
+        <div className='price'>{formatCurrency(item.price)}</div>
         <div className='dimension'>{item.dimension.length + '-' + item.dimension.width + '-' + item.dimension.height}</div>
         <div className='parking-address content-padding'>
           <span className='pa'>{item.parking_address}</span>
@@ -162,7 +165,7 @@ export class TruckTable extends Component {
   }
 
   render () {
-    const { productsFiltered, sortType, descending, searchCriteria, loading } = this.state
+    const { productsFiltered, sortType, descending, searchCriteria, loading, pageNum, maxPage } = this.state
 
     return (
       <div className='product-table'>
@@ -197,8 +200,15 @@ export class TruckTable extends Component {
             </div>
           </div>
         </div>
+
         <div className='table-footer'>
-          Total Records: <span>{productsFiltered.length}</span>
+          <div>Total Records: <span>{productsFiltered.length}</span></div>
+
+          <div className='paging'>
+            <div className='txt'>Page <span>{pageNum}</span> of <span>{maxPage}</span></div>
+            <ButtonMain disabled={pageNum <= 1} onClick={() => this.setState({ pageNum: this.state.pageNum - 1 })} className='paging-btn' title='<' />
+            <ButtonMain disabled={pageNum >= maxPage} onClick={() => this.setState({ pageNum: this.state.pageNum + 1 })} className='paging-btn' title='>' />
+          </div>
         </div>
       </div>
     )

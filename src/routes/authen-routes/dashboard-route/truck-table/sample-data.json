@@ -20,7 +20,7 @@
     "id": 1,
     "truck_plate": "30A-12345",
     "cargo_type": ["Vegetable"],
-    "driver": "Nguyen Van A",
+    "driver": "Nguyen Van B",
     "truck_type": 10,
     "price": 1500000000,
     "dimension": {
@@ -29,7 +29,7 @@
       "height": 1.5
     },
     "parking_address": "No. 128 Hoan Kiem Street, Hanoi",
-    "production_year": "2010",
+    "production_year": "2015",
     "status": 1,
     "description": "Sample Description 2"
   },
@@ -46,7 +46,7 @@
       "height": 1.5
     },
     "parking_address": "No. 128 Hoan Kiem Street, Hanoi",
-    "production_year": "2010",
+    "production_year": "2018",
     "status": 2,
     "description": "Sample Description"
   }
