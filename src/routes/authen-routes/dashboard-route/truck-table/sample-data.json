@@ -4,7 +4,7 @@
     "truck_plate": "30A-50493",
     "cargo_type": ["Computer", "Electronic"],
     "driver": "Nguyen Van A",
-    "truck_type": "5 tons",
+    "truck_type": 5,
     "price": 1000000000,
     "dimension": {
       "length": 10,
@@ -21,7 +21,7 @@
     "truck_plate": "30A-12345",
     "cargo_type": ["Vegetable"],
     "driver": "Nguyen Van A",
-    "truck_type": "10 tons",
+    "truck_type": 10,
     "price": 1500000000,
     "dimension": {
       "length": 10,
@@ -38,7 +38,7 @@
     "truck_plate": "30A-99999",
     "cargo_type": ["Kid toys", "Computer"],
     "driver": "Nguyen Van C",
-    "truck_type": "20 tons",
+    "truck_type": 20,
     "price": 1200000000,
     "dimension": {
       "length": 10,

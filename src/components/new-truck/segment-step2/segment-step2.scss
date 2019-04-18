@@ -13,6 +13,14 @@
     margin-bottom: 10px;
   }
 
+  .dimensions {
+    display: flex;
+
+    .dimension.middle {
+      margin: 0 4px;
+    }
+  }
+
   .pa-input {
     margin-bottom: 10px;
 

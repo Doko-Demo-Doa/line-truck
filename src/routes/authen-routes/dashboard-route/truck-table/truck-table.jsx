@@ -91,7 +91,29 @@ export class TruckTable extends Component {
   onAddTruck () {
     modals.open({
       content: <NewTruckModal onClose={(values) => {
-        console.log(values)
+        // console.log(values)
+        this.setState(prevState => {
+          return {
+            ...prevState,
+            products: prevState.products.push({
+              id: prevState.products.length + 1,
+              truck_plate: values.truckPlate,
+              cargo_type: values.cargoTypes,
+              truck_type: values.truckType,
+              driver: values.driverName,
+              price: parseInt(values.price),
+              dimension: {
+                length: parseFloat(values.vLength),
+                width: parseFloat(values.vWidth),
+                height: parseFloat(values.vHeight)
+              },
+              parking_address: values.parkingAddress,
+              productionYear: '2009',
+              status: values.status,
+              description: values.description
+            })
+          }
+        }, () => console.log(values))
         modals.close()
       }} />
     })
@@ -115,7 +137,7 @@ export class TruckTable extends Component {
           {item.cargo_type.join(', ')}
         </div>
         <div className='driver-name'>{item.driver}</div>
-        <div className='truck-type'>{item.truck_type || '-'}</div>
+        <div className='truck-type'>{`${item.truck_type} tons` || '-'}</div>
         <div className='price'>{item.price}</div>
         <div className='dimension'>{item.dimension.length + '-' + item.dimension.width + '-' + item.dimension.height}</div>
         <div className='parking-address'>

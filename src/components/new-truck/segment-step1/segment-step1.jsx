@@ -5,6 +5,7 @@ import './segment-step1.scss'
 import { Checkbox } from 'components/checkbox/checkbox'
 import { CustomInput } from 'components/custom-input/custom-input'
 import { ButtonMain } from 'components/button/button-main'
+import { isValidIndex } from '../../../utils/utils-validation'
 
 const CARGO_TYPES = [
   'Computer',
@@ -23,7 +24,7 @@ const validator = values => {
   let errors = {}
   if (values.cargoTypes.length <= 0) errors.cargoTypes = 'Please choose at least one type'
   if (!values.driverName) errors.driverName = 'Please enter driver name'
-  if (!values.status) errors.status = 'Please choose vehicle status'
+  if (!isValidIndex(values.status)) errors.status = 'Please choose vehicle status'
   return errors
 }
 
@@ -97,10 +98,10 @@ export class SegmentStep1 extends Component {
                   <CustomInput
                     type='select'
                     error={errors.status}
-                    className='segment-input' value={values.status}
+                    className='segment-input' value={statuses[values.status]}
                     onChange={idx => {
-                      this.onUpdate('status', statuses[idx])
-                      setFieldValue('status', statuses[idx])
+                      this.onUpdate('status', idx)
+                      setFieldValue('status', idx)
                     }} options={statuses} label='Status*' />
 
                   <div style={{ height: 42 }} />

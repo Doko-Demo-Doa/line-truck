@@ -22,6 +22,7 @@ export class NewTruckModal extends Component {
       ...this.params,
       ...dataStep2
     }
+    console.log(dataParams)
     modals.open({ content: <RFISent onClose={() => this.props.onClose(dataParams)} /> })
   }
 

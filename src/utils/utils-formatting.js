@@ -1,3 +1,5 @@
+import numeral from 'numeral'
+
 export const truckPlateFormatter = (number: string) => {
   if (!number) return null
   if (number.length > 3) {
@@ -8,4 +10,23 @@ export const truckPlateFormatter = (number: string) => {
   }
 
   return number.toUpperCase()
+}
+
+export function formatCurrency (input) {
+  if (!input) return ''
+  return numeral(input).format('0,0.[00]')
+}
+
+export function isValidUnit (str) {
+  const num = String(str).replace(',', '.')
+  if (isNaN(num)) return false
+  return true
+}
+
+export function removeAllNonNumeric (str) {
+  if (!str) return ''
+  let n = String(str)
+  n.replace('[^\\d.,]', '')
+  const resp = n.replace(/[^0-9.]/g, '')
+  return resp
 }
