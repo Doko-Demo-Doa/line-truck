@@ -1,0 +1,42 @@
+@import '~styles/colors';
+@import '~styles/variables';
+
+.rfi-sent {
+  padding: 20px;
+  width: 295px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  .icon-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+  }
+
+  .paperplane {
+    width: 140px;
+  }
+
+  .headline {
+    font-size: 30px;
+    font-family: $font-condensed-bold;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 14px;
+  }
+
+  .subheadline {
+    margin-bottom: 26px;
+  }
+
+  .btn {
+    width: 100%;
+    border-radius: 4px;
+    align-self: flex-end;
+  }
+}

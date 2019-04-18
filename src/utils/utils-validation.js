@@ -16,7 +16,10 @@ export function isValidPlate (code: string) {
   const rawCode = code.replace('-', '')
   if (!code) return false
   if (rawCode.length !== 8) return false
+  if (!rawCode.charAt(0).match(/^[0-9a]+$/)) return false
+  if (!rawCode.charAt(1).match(/^[0-9a]+$/)) return false
   if (!rawCode.charAt(2).match(/^[zA-Z]+$/)) return false
+
   return (/^[0-9a-zA-Z]+$/.test(rawCode))
 }
 

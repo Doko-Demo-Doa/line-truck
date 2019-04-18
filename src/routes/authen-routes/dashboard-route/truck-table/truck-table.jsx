@@ -50,7 +50,7 @@ const TABLE_SECTIONS = [
     cls: 'parking-address'
   },
   {
-    name: 'Production Year',
+    name: 'P. Year',
     cls: 'production-year'
   },
   {
@@ -90,7 +90,8 @@ export class TruckTable extends Component {
 
   onAddTruck () {
     modals.open({
-      content: <NewTruckModal onClose={() => {
+      content: <NewTruckModal onClose={(values) => {
+        console.log(values)
         modals.close()
       }} />
     })
@@ -120,7 +121,7 @@ export class TruckTable extends Component {
         <div className='parking-address'>
           <span className='pa'>{item.parking_address}</span>
         </div>
-        <div className='production-year'>{item.production_year}</div>
+        <div title='Production Year' className='production-year'>{item.production_year}</div>
         <div className='status'>{item.status}</div>
         <div className='description'>{item.description}</div>
       </div>

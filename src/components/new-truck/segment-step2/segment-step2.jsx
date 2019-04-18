@@ -16,18 +16,18 @@ const validator = values => {
 
 export class SegmentStep2 extends Component {
   render () {
-    // const { onSubmit } = this.props
+    const { onSubmit } = this.props
 
     return (
       <Formik
-        onSubmit={values => this.attemptSubmit(values)}
+        onSubmit={values => onSubmit(values)}
         validate={validator}
         initialValues={{
           truckPlate: '',
-          parkingAddress: null,
-          description: null
+          parkingAddress: '',
+          description: ''
         }}>
-        {({ values, handleSubmit, handleChange, setFieldValue, errors }) => {
+        {({ values, handleSubmit, handleChange, setFieldValue, isValid, errors }) => {
           return (
             <div className='step-2-document'>
               <div className='head'>We need a bit more information. How about your vehicle?</div>
@@ -60,7 +60,7 @@ export class SegmentStep2 extends Component {
 
               <div className='footer-area'>
                 <div>* These fields are mandatory</div>
-                <ButtonMain disabled={!isEmpty(errors)} title='Submit' />
+                <ButtonMain onClick={handleSubmit} disabled={!isValid || !isEmpty(errors)} title='Submit' />
               </div>
             </div>
           )

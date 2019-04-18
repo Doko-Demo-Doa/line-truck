@@ -54,13 +54,11 @@ export class SegmentStep1 extends Component {
           validate={validator}
           initialValues={{
             cargoTypes: [],
-            driverName: null,
-            status: null
+            driverName: '',
+            status: ''
           }}
         >
           {({ values, handleSubmit, handleChange, isInitialValid, isValid, setFieldValue, errors }) => {
-            console.log(errors)
-            console.log(isValid)
             const { driverName } = values
             return (
                 <>
@@ -104,6 +102,8 @@ export class SegmentStep1 extends Component {
                       this.onUpdate('status', statuses[idx])
                       setFieldValue('status', statuses[idx])
                     }} options={statuses} label='Status*' />
+
+                  <div style={{ height: 42 }} />
 
                   <div className='footer-area'>
                     <div>* These fields are mandatory</div>
