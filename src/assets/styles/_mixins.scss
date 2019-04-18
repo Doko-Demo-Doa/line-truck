@@ -82,7 +82,7 @@
 
   &:hover {
     @if $hov == 1 {
-      background-color: wheat;
+      background-color: $color-gray-light;
     }
   }
 }

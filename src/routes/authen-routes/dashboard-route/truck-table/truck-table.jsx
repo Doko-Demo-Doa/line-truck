@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
-import { sortBy } from 'lodash'
 import Spinner from 'react-spinkit'
 import { Switch } from 'components/switch/switch'
 import { SortIcon } from 'components/icon'
 import { Chip } from 'components/chip/chip'
 import { AppEventEmitter } from 'services/app-event-emitter'
+import { sortBy } from 'lodash'
 import './truck-table.scss'
 import sampleTrucks from './sample-data.json'
 import { ButtonMain } from 'components/button/button-main'
@@ -16,7 +16,7 @@ import { truckStatusMapper } from '../../../../utils/utils-data'
 const TABLE_SECTIONS = [
   {
     name: 'Plate',
-    id: 'truck-plate',
+    id: 'truckPlate',
     cls: 'truck-plate'
   },
   {
@@ -32,6 +32,7 @@ const TABLE_SECTIONS = [
   },
   {
     name: 'Truck Type',
+    id: 'truckType',
     cls: 'truck-type'
   },
   {
@@ -43,20 +44,23 @@ const TABLE_SECTIONS = [
   {
     name: 'Dimension',
     id: 'dimension',
-    cls: 'dimension',
-    icon: true
+    cls: 'dimension'
   },
   {
     name: 'Parking address',
+    id: 'parkingAddress',
     cls: 'parking-address'
   },
   {
     name: 'P. Year',
+    id: 'productionYear',
     cls: 'production-year'
   },
   {
     name: 'Status',
-    cls: 'status'
+    id: 'status',
+    cls: 'status',
+    icon: true
   },
   {
     name: 'Description',
@@ -70,7 +74,9 @@ export class TruckTable extends Component {
     this.list = React.createRef()
     this.state = {
       products: sampleTrucks,
-      productsFiltered: sampleTrucks
+      productsFiltered: sampleTrucks,
+      sortType: 'cargoType',
+      descending: true // Sorting with reversed order
     }
   }
 
@@ -87,6 +93,16 @@ export class TruckTable extends Component {
 
   async onSwitch (isAll) {
 
+  }
+
+  onSort (type) {
+    const { productsFiltered, sortType } = this.state
+    this.setState({ descending: !this.state.descending }, () => {
+      const sortedArray = (type === sortType) ? this.state.descending ? sortBy(productsFiltered, type) : sortBy(productsFiltered, type).reverse() : sortBy(productsFiltered, type).reverse()
+      console.log(this.state.descending)
+      console.table(sortedArray)
+      this.setState({ sortType: type, productsFiltered: sortedArray })
+    })
   }
 
   onAddTruck () {
@@ -119,14 +135,6 @@ export class TruckTable extends Component {
         }, () => console.log(this.state))
         modals.close()
       }} />
-    })
-  }
-
-  onSort (type) {
-    const { descending, productsFiltered, sortType } = this.state
-    this.setState({ descending: !descending }, () => {
-      const sortedArray = (type === sortType) ? this.state.descending ? sortBy(productsFiltered, type).reverse() : sortBy(productsFiltered, type) : sortBy(productsFiltered, type).reverse()
-      this.setState({ sortType: type, productsFiltered: sortedArray })
     })
   }
 

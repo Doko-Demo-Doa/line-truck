@@ -15,7 +15,7 @@ const CARGO_TYPES = [
   'Animal',
   'Metal',
   'Chemical',
-  'Frozen Liquid',
+  'Kid toys',
   'Clothes',
   'Shoes'
 ]
