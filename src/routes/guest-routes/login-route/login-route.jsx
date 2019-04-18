@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Logo from '../../../assets/images/logo.svg'
 import './login-route.scss'
 import { CheckGreenIcon } from 'components/icon'
 import { LoginForm } from './login-form/login-form'
@@ -15,8 +14,6 @@ export class LoginRoute extends Component {
     return (
       <div className='login-route'>
         <div className='left-column'>
-          <img className='logo' src={Logo} />
-          <div style={{ height: '10%' }} />
 
           <div className='headline'>Welcome back!</div>
           <div className='cool'>Line Trucks is a very cool platform that combines multiple tools. All of them are very cool and this is why:</div>

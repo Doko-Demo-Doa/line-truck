@@ -11,6 +11,58 @@ The app is also available as a [Docker](https://www.docker.com/) container. Defa
 - NodeJS 8+ (Installing with [NVS](https://github.com/jasongin/nvs) is recommended)
 - node-gyp. Install by using following command: `npm i -g node-gyp`
 
+# Installation
+
+- Unzip the source code. Then `cd` into it, e.g:
+
+```sh
+cd line-truck
+```
+
+- Install dependencies:
+
+```
+npm install
+```
+
+or if [yarn](https://yarnpkg.com/en/docs/install) is installed
+
+```
+yarn
+```
+
+- To start webpack development server. Run:
+
+```
+npm run start
+```
+
+- To create optimized production build. Run:
+
+```sh
+npm run build
+```
+
+- To create a "live" local http server. It is recommended to use `serve`. Install it as global package:
+
+```sh
+npm i -g serve
+```
+
+Then `cd` to the `build` folder (which contains built artifacts):
+
+```sh
+cd build
+```
+
+then finally:
+
+```
+serve
+```
+
+We can now run the production app in `http://localhost:5000`
+
 ## Project structures
 
 ````
@@ -28,12 +80,10 @@ The app is also available as a [Docker](https://www.docker.com/) container. Defa
 │   │   ├── header-button
 │   │   └── searchbox
 │   ├── logo
-│   └── swtich
+│   └── switch
 ├── reducers
 ├── routes
 │   ├── authen
-│   │   ├── products
-│   │   ├── purchase-request
 │   │   └── successful
 │   └── guest
 │       └── login

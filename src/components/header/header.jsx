@@ -5,20 +5,19 @@ import { SearchBox } from './searchbox/searchbox'
 import { ArrowDownIcon } from 'components/icon'
 import { WithDropdown } from '../../hocs/with-dropdown/with-dropdown'
 import { HeaderMenu } from 'components/header-menu/header-menu'
-
-/* const HEADER_BTNS = [
-  { icon: 'dashboard', destination: '/login' },
-  { icon: 'list', destination: '/products' },
-  { icon: 'pricetag', destination: '/purchase-request' },
-  { icon: 'delivery', destination: '/successful' },
-  { icon: 'receipt', destination: '/login' },
-  { icon: 'notification', destination: '/login' },
-  { icon: 'setting', destination: '/login' }
-] */
+import { modals } from 'components/modals/modal-registry'
+import { LoggedoutLayout } from 'components/modals/modal-layouts/loggedout-layout'
+import { customHistory } from 'common/history'
 
 export class Header extends Component {
   onLogout (val) {
-    // TODO
+    if (val !== 'Logout') return
+    customHistory.push('/login')
+    modals.open({
+      content: <LoggedoutLayout onClose={() => {
+        modals.close()
+      }} />
+    })
   }
 
   render () {

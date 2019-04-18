@@ -25,7 +25,7 @@ export class LoginForm extends Component {
         validate={validator}
         onSubmit={(values) => this.attemptSubmit(values)}
         initialValues={{
-          username: 'impuser01',
+          username: 'lineuser01',
           password: ''
         }}
       >
